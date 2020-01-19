@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Upload the PDF File</h2>
+
+<form name='upload_form' method='post' action='/upload_file/'>
+	{% csrf_token %}
+	Owner Name: <input type="text" id="owner_name" name="owner_name">
+	<br>
+	<br>
+	Adhar Number: <input type="text" id="adhar_number" name="adhar_number">
+	<br>
+	<br>
+	Email Id: <input type="Email" name="email_id"/>
+	<br>
+	<br>
+	Property Name: <input type="text" id="property_name" name="property_name">
+	<br>
+	<br>
+	Property Paper: <input type="file" id="property_paper" name="property_paper">
+	<br>
+	<br>
+	<input type='submit' value='Upload'>
+</form>
+
+<script>
+function myFunction() {
+  
+}
+</script>
+
+</body>
+</html>

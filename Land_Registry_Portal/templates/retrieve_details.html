@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Retrieve the original File</h2>
+
+<form name='retrieve_form' method='post' action='/retrieve_file/'>
+	{% csrf_token %}
+	Property ID: <input type="text" id="property_id" name="property_id">
+	<br>
+	<br>
+	Property Name: <input type="text" id="property_name" name="property_name">
+	<br>
+	<br>
+	Hash: <input type="text" id="property_hash" name="property_hash">
+	<br>
+	<br>
+	Email: <input type="Email" name="email_id"/>
+	<br>
+	<br>
+	<input type='submit' value='Retrieve'>
+</form>
+
+<script>
+function myFunction() {
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<h2>Store or Retrieve</h2>
+<form name='Store' action='/upload_details/' method='post'>
+	{% csrf_token %}
+	<input type="submit" value="Store">
+</form>
+<br><br>
+<form name='Retrieve' action='/retrieve_details/' method='post'>
+	{% csrf_token %}
+	<input type="submit" value="Retrieve">
+</form>
+
+</body>
+</html>
