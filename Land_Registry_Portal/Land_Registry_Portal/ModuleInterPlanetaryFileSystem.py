@@ -1,13 +1,14 @@
 import ipfsapi
 from Land_Registry_Portal import db_info
-import glob
+#import glob
 
 
 def upload_file_in_ipfs(property_id, property_name, file_name):
     # Connect to local node
     try:
         api = ipfsapi.connect('127.0.0.1', 5001)
-        #print(api)        
+        #print(api) 
+        
         new_file = api.add(file_name)
         hash = new_file['Hash']
         
@@ -27,8 +28,14 @@ def retrieve_file_from_ipfs(property_id, property_name, hash):
         #print(api)
         
         content=api.cat(hash)
- 
-        file_name = glob.glob('F:/BE Project/Land_Registry_Portal/Land_Registry_Portal/Decrypted_Property_Papers/'+str(property_id)+'_*')[0]
+
+        db_obj = db_info.Land_Registry_Portal()
+        query = 'SELECT extension FROM land_registry_portal.tbl_advanced_encryption_standard WHERE property_id = %s AND property_name = %s;'
+        args = (property_id, property_name)
+        res = db_obj.select_db(query, args)
+        extension = res[0]['extension']
+        
+        file_name = 'F:/BE Project/Land_Registry_Portal/Land_Registry_Portal/Decrypted_Property_Papers/'+str(property_id)+'_'+str(property_name)+'.'+str(extension)+'.encrypted'
         f=open(file_name, 'wb')
         f.write(content)
         

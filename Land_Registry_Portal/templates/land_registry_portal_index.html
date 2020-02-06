@@ -1,18 +1,407 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
+<head>
+  <title>Land Registry Portal Index</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
+  <style>
+  
+  /* Navbar */
+
+	@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+	@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+
+	body {
+		background: #212121;
+		font-size:22px;
+		line-height: 32px;
+		color: #ffffff;
+		margin: 0;
+		padding: 0;
+		word-wrap:break-word !important;
+		font-family: 'Open Sans', sans-serif;
+		}
+
+	h1 {
+		font-size: 60px;
+		text-align: center;
+		color: #FFF;
+	}	
+
+	h3 {
+		font-size: 30px;
+		line-height: 34px;
+		text-align: center;
+		color: #FFF;
+	}
+
+	h3 a {
+		color: #FFF;
+	}
+
+	a {
+		color: #FFF;
+	}
+
+	h1 {
+		margin-top: 100px;
+		text-align:center;
+		font-size:60px;
+		line-height: 70px;
+		font-family: 'Bree Serif', 'serif';
+		}
+
+	#container {
+		margin: 0 auto;
+		max-width: 890px;
+	}
+
+	p {
+		text-align: center;
+	}
+
+	.toggle,
+	[id^=drop] {
+		display: none;
+	}
+
+	/* Giving a background-color to the nav container. */
+	nav { 
+		margin:0;
+		padding: 0;
+		background-color: #254441;
+	}
+
+	#logo {
+		display: block;
+		padding: 0 30px;
+		float: left;
+		font-size:20px;
+		line-height: 60px;
+	}
+
+	/* Since we'll have the "ul li" "float:left"
+	 * we need to add a clear after the container. */
+
+	nav:after {
+		content:"";
+		display:table;
+		clear:both;
+	}
+
+	/* Removing padding, margin and "list-style" from the "ul",
+	 * and adding "position:reltive" */
+	nav ul {
+		float: right;
+		padding:0;
+		margin:0;
+		list-style: none;
+		position: relative;
+		}
+		
+	/* Positioning the navigation items inline */
+	nav ul li {
+		margin: 0px;
+		display:inline-block;
+		float: left;
+		background-color: #254441;
+		}
+
+	/* Styling the links */
+	nav a {
+		display:block;
+		padding:14px 20px;	
+		color:#FFF;
+		font-size:17px;
+		text-decoration:none !important;
+		color: white;
+	}
+
+
+	nav ul li ul li:hover { background: #000000; }
+
+	/* Background color change on Hover */
+	nav a:hover { 
+		background-color: #000000; 
+		color: white;
+	}
+
+	/* Hide Dropdowns by Default
+	 * and giving it a position of absolute */
+	nav ul ul {
+		display: none;
+		position: absolute; 
+		/* has to be the same number as the "line-height" of "nav a" */
+		top: 60px; 
+	}
+		
+	/* Display Dropdowns on Hover */
+	nav ul li:hover > ul {
+		display:inherit;
+	}
+		
+	/* Fisrt Tier Dropdown */
+	nav ul ul li {
+		width:170px;
+		float:none;
+		display:list-item;
+		position: relative;
+	}
+
+	/* Second, Third and more Tiers	
+	 * We move the 2nd and 3rd etc tier dropdowns to the left
+	 * by the amount of the width of the first tier.
+	*/
+	nav ul ul ul li {
+		position: relative;
+		top:-60px;
+		/* has to be the same number as the "width" of "nav ul ul li" */ 
+		left:170px; 
+	}
+
+		
+	/* Change ' +' in order to change the Dropdown symbol */
+	li > a:after { content:  ' +'; }
+	li > a:only-child:after { content: ''; }
+
+
+	/* Media Queries
+	--------------------------------------------- */
+
+	@media all and (max-width : 768px) {
+
+		#logo {
+			display: block;
+			padding: 0;
+			width: 100%;
+			text-align: center;
+			float: none;
+		}
+
+		nav {
+			margin: 0;
+		}
+
+		/* Hide the navigation menu by default */
+		/* Also hide the  */
+		.toggle + a,
+		.menu {
+			display: none;
+		}
+
+		/* Stylinf the toggle lable */
+		.toggle {
+			display: block;
+			background-color: #254441;
+			padding:14px 20px;	
+			color:#FFF;
+			font-size:17px;
+			text-decoration:none;
+			border:none;
+		}
+
+		.toggle:hover {
+			background-color: #000000;
+		}
+
+		/* Display Dropdown when clicked on Parent Lable */
+		[id^=drop]:checked + ul {
+			display: block;
+		}
+
+		/* Change menu item's width to 100% */
+		nav ul li {
+			display: block;
+			width: 100%;
+			}
+
+		nav ul ul .toggle,
+		nav ul ul a {
+			padding: 0 40px;
+		}
+
+		nav ul ul ul a {
+			padding: 0 80px;
+		}
+
+		nav a:hover,
+		nav ul ul ul a {
+			background-color: #000000;
+		}
+	  
+		nav ul li ul li .toggle,
+		nav ul ul a,
+	  nav ul ul ul a{
+			padding:14px 20px;	
+			color:#FFF;
+			font-size:17px; 
+		}
+	  
+	  
+		nav ul li ul li .toggle,
+		nav ul ul a {
+			background-color: #212121; 
+		}
+
+		/* Hide Dropdowns by Default */
+		nav ul ul {
+			float: none;
+			position:static;
+			color: #ffffff;
+			/* has to be the same number as the "line-height" of "nav a" */
+		}
+			
+		/* Hide menus on hover */
+		nav ul ul li:hover > ul,
+		nav ul li:hover > ul {
+			display: none;
+		}
+			
+		/* Fisrt Tier Dropdown */
+		nav ul ul li {
+			display: block;
+			width: 100%;
+		}
+
+		nav ul ul ul li {
+			position: static;
+			/* has to be the same number as the "width" of "nav ul ul li" */ 
+
+		}
+
+	}
+
+	@media all and (max-width : 330px) {
+
+		nav ul li {
+			display:block;
+			width: 94%;
+		}
+
+	}
+
+	.down {
+	  transform: rotate(45deg);
+	  -webkit-transform: rotate(45deg);
+	}
+	
+	i {
+	  border: solid white;
+	  border-width: 0 3px 3px 0;
+	  display: inline-block;
+	  padding: 3px;
+	}
+  
+/* Navbar */
+
+/* Main body */
+
+	.ripple-button1, .ripple-button2, .ripple-button3{
+		position:relative;
+		width:250px;
+		height:75px;
+		background-color: #254441;
+		color:#FFF;
+		border-radius:3px;
+		text-decoration:none;
+		text-align:center;
+		vertical-align:middle;
+		display:table-cell;
+	}
+
+	.wave{
+		position:absolute;
+		width:250px;
+		height:75px;
+		background-color:#FFF;
+		top:0;
+		left:0;
+		transform: scale(0);
+		opacity:0.5;
+	}
+
+	.ripple-button1:hover > .wave, .ripple-button2:hover > .wave, .ripple-button3:hover > .wave{
+		animation: ripple-in 2s;
+	}
+
+	@keyframes ripple-in {
+	 0% {transform: scaleX(0);}
+	 20%{transform: scaleX(1);opacity:0.3;}
+	 100%{transform: scaleX(1);opacity:0;}
+	}
+
+	a {
+	  text-decoration: none !important;
+	  color: white;
+	}
+
+	.img {
+	  margin-right: -15px;
+	  margin-left: -15px;
+	  padding-bottom: 62.5%;
+	  background-position: 50% 50%;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	}
+	
+	a:hover { 
+		color: white;
+	}
+
+/* Main body */
+
+  </style>
+</head>
 <body>
 
+<!-- Nav Bar -->
+<nav>
+        <div id="logo">Land Registry Portal</div>
 
-<h2>Store or Retrieve</h2>
-<form name='Store' action='/upload_details/' method='post'>
-	{% csrf_token %}
-	<input type="submit" value="Store">
-</form>
-<br><br>
-<form name='Retrieve' action='/retrieve_details/' method='post'>
-	{% csrf_token %}
-	<input type="submit" value="Retrieve">
-</form>
+        <label for="drop" class="toggle">Menu</label>
+        <input type="checkbox" id="drop" />
+            <ul class="menu">
+                <li><a href="/land_registry_portal_index/">Home</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
+                <li>
+					<label for="drop-1" class="toggle">{{user}}+</label>
+					<a href="#">{{user}}</a>
+					<input type="checkbox" id="drop-1"/>
+					<ul>
+						<li><a href="/logout/">Log Out</a></li>
+					</ul> 
+                </li>
+            </ul>
+        </nav>
+<!-- Nav Bar -->
+  
+<!-- Main page https://cdn.nohat.cc/thumb/f/720/5557286722338816.jpg
+               https://chitralekha.com/chitralemag/wp-content/uploads/2019/04/bigstock-144968120-900x444-324x160.jpg--> 
+<div class="container-fluid">
 
+	<div class = "row">
+
+		<div class = 'col-md-8'>
+			<div class="img" style="margin-top:2%; background-image: url('https://cdn.nohat.cc/thumb/f/720/5557286722338816.jpg'); background-size: 1058px 700px;">
+			</div>
+		</div>
+
+		<div class = 'col-md-4'>
+			<div class="groove" style="margin-top: 41%; margin-left: 25%">
+				<a href="/upload_details/" class="ripple-button1"><div class="wave"></div>Store</a>
+				&nbsp;&nbsp;
+				<a href="/retrieve_details/" class="ripple-button2"><div class="wave"></div>Retrieve</a>
+				&nbsp;&nbsp;
+				<a href="/transact/" class="ripple-button3"><div class="wave"></div>Transact</a>
+			</div>
+		</div>
+
+		<!--<div class = 'col-md-5'></div>-->
+
+	</div>
+
+</div>
+
+<!-- Main Page-->
 </body>
 </html>

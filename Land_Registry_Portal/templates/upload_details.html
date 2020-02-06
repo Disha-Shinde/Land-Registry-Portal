@@ -1,34 +1,499 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
+<head>
+  <title>Upload Details</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <style>
+  
+  /* Navbar */
+
+	@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+	@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+
+	body {
+		background: #212121;
+		font-size:22px;
+		line-height: 32px;
+		color: #ffffff;
+		margin: 0;
+		padding: 0;
+		word-wrap:break-word !important;
+		font-family: 'Open Sans', sans-serif;
+		}
+
+	h1 {
+		font-size: 60px;
+		text-align: center;
+		color: #FFF;
+	}	
+
+	h3 {
+		font-size: 30px;
+		line-height: 34px;
+		text-align: center;
+		color: #FFF;
+	}
+
+	h3 a {
+		color: #FFF;
+	}
+
+	a {
+		color: #FFF;
+	}
+
+	h1 {
+		margin-top: 100px;
+		text-align:center;
+		font-size:60px;
+		line-height: 70px;
+		font-family: 'Bree Serif', 'serif';
+		}
+
+	#container {
+		margin: 0 auto;
+		max-width: 890px;
+	}
+
+	p {
+		text-align: center;
+	}
+
+	.toggle,
+	[id^=drop] {
+		display: none;
+	}
+
+	/* Giving a background-color to the nav container. */
+	nav { 
+		margin:0;
+		padding: 0;
+		background-color: #254441;
+	}
+
+	#logo {
+		display: block;
+		padding: 0 30px;
+		float: left;
+		font-size:20px;
+		line-height: 60px;
+	}
+
+	/* Since we'll have the "ul li" "float:left"
+	 * we need to add a clear after the container. */
+
+	nav:after {
+		content:"";
+		display:table;
+		clear:both;
+	}
+
+	/* Removing padding, margin and "list-style" from the "ul",
+	 * and adding "position:reltive" */
+	nav ul {
+		float: right;
+		padding:0;
+		margin:0;
+		list-style: none;
+		position: relative;
+		}
+		
+	/* Positioning the navigation items inline */
+	nav ul li {
+		margin: 0px;
+		display:inline-block;
+		float: left;
+		background-color: #254441;
+		}
+
+	/* Styling the links */
+	nav a {
+		display:block;
+		padding:14px 20px;	
+		color:#FFF;
+		font-size:17px;
+		text-decoration:none !important;
+		color: white;
+	}
+
+
+	nav ul li ul li:hover { background: #000000; }
+
+	/* Background color change on Hover */
+	nav a:hover { 
+		background-color: #000000; 
+		color: white;
+	}
+
+	/* Hide Dropdowns by Default
+	 * and giving it a position of absolute */
+	nav ul ul {
+		display: none;
+		position: absolute; 
+		/* has to be the same number as the "line-height" of "nav a" */
+		top: 60px; 
+	}
+		
+	/* Display Dropdowns on Hover */
+	nav ul li:hover > ul {
+		display:inherit;
+	}
+		
+	/* Fisrt Tier Dropdown */
+	nav ul ul li {
+		width:170px;
+		float:none;
+		display:list-item;
+		position: relative;
+	}
+
+	/* Second, Third and more Tiers	
+	 * We move the 2nd and 3rd etc tier dropdowns to the left
+	 * by the amount of the width of the first tier.
+	*/
+	nav ul ul ul li {
+		position: relative;
+		top:-60px;
+		/* has to be the same number as the "width" of "nav ul ul li" */ 
+		left:170px; 
+	}
+
+		
+	/* Change ' +' in order to change the Dropdown symbol */
+	li > a:after { content:  ' +'; }
+	li > a:only-child:after { content: ''; }
+
+
+	/* Media Queries
+	--------------------------------------------- */
+
+	@media all and (max-width : 768px) {
+
+		#logo {
+			display: block;
+			padding: 0;
+			width: 100%;
+			text-align: center;
+			float: none;
+		}
+
+		nav {
+			margin: 0;
+		}
+
+		/* Hide the navigation menu by default */
+		/* Also hide the  */
+		.toggle + a,
+		.menu {
+			display: none;
+		}
+
+		/* Stylinf the toggle lable */
+		.toggle {
+			display: block;
+			background-color: #254441;
+			padding:14px 20px;	
+			color:#FFF;
+			font-size:17px;
+			text-decoration:none;
+			border:none;
+		}
+
+		.toggle:hover {
+			background-color: #000000;
+		}
+
+		/* Display Dropdown when clicked on Parent Lable */
+		[id^=drop]:checked + ul {
+			display: block;
+		}
+
+		/* Change menu item's width to 100% */
+		nav ul li {
+			display: block;
+			width: 100%;
+			}
+
+		nav ul ul .toggle,
+		nav ul ul a {
+			padding: 0 40px;
+		}
+
+		nav ul ul ul a {
+			padding: 0 80px;
+		}
+
+		nav a:hover,
+		nav ul ul ul a {
+			background-color: #000000;
+		}
+	  
+		nav ul li ul li .toggle,
+		nav ul ul a,
+	  nav ul ul ul a{
+			padding:14px 20px;	
+			color:#FFF;
+			font-size:17px; 
+		}
+	  
+	  
+		nav ul li ul li .toggle,
+		nav ul ul a {
+			background-color: #212121; 
+		}
+
+		/* Hide Dropdowns by Default */
+		nav ul ul {
+			float: none;
+			position:static;
+			color: #ffffff;
+			/* has to be the same number as the "line-height" of "nav a" */
+		}
+			
+		/* Hide menus on hover */
+		nav ul ul li:hover > ul,
+		nav ul li:hover > ul {
+			display: none;
+		}
+			
+		/* Fisrt Tier Dropdown */
+		nav ul ul li {
+			display: block;
+			width: 100%;
+		}
+
+		nav ul ul ul li {
+			position: static;
+			/* has to be the same number as the "width" of "nav ul ul li" */ 
+
+		}
+
+	}
+
+	@media all and (max-width : 330px) {
+
+		nav ul li {
+			display:block;
+			width: 94%;
+		}
+
+	}
+
+	.down {
+	  transform: rotate(45deg);
+	  -webkit-transform: rotate(45deg);
+	}
+	
+	i {
+	  border: solid white;
+	  border-width: 0 3px 3px 0;
+	  display: inline-block;
+	  padding: 3px;
+	}
+  
+/* Navbar */
+
+/* Main body */
+
+.upload_form {
+  width: 100%;
+  padding: 2em;
+  position: relative;
+  background-color: #254441;
+}
+.upload_form:before {
+  content: '';
+  position: absolute;
+}
+@media screen and (min-width: 600px) {
+  .upload_form {
+    width: 100%;
+  }
+}
+
+.flex-row {
+  display: -webkit-box;
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.lf--input {
+  height: 40px;
+  padding: 1em;
+  border-radius: 25px;
+  border-color: #8f8f8f;
+  color: #8f8f8f;
+  font-size: 1rem;
+  width: 350px;
+  float: right;
+}
+.lf--input:focus {
+  outline: none;
+  -webkit-transition: -webkit-transform .15s ease;
+  transition: -webkit-transform .15s ease;
+  transition: transform .15s ease;
+  transition: transform .15s ease, -webkit-transform .15s ease;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.lf--submit {
+  display: block;
+  padding: 7px;
+  width: 270px;
+  height: 50px;
+  background-color: #212121;
+  border-color: #212121;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+  font-size: .75em;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+.lf--submit:focus {
+  outline: none;
+  -webkit-transition: -webkit-transform .15s ease;
+  transition: -webkit-transform .15s ease;
+  transition: transform .15s ease;
+  transition: transform .15s ease, -webkit-transform .15s ease;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+::-webkit-input-placeholder {
+  color: #8f8f8f;
+}
+
+::-moz-placeholder {
+  color: #8f8f8f;
+}
+
+:-ms-input-placeholder {
+  color: #8f8f8f;
+}
+
+::-ms-input-placeholder {
+  color: #8f8f8f;
+}
+
+::placeholder {
+  color: #8f8f8f;
+}
+
+
+.col-50
+{
+    width: 20%;
+    float:left;
+    margin-top: 5px;
+}
+
+.col-50
+{
+    width: 80%;
+    float:left;
+    margin-top: 5px;
+}
+
+.btn-primary, .btn-primary:hover {
+	background-color: #212121;
+	border-radius: 20px;
+	border-color: #212121;
+}
+.label-info {
+	background-color: #212121;
+	font-size: 10px;
+}
+/* Main Body */
+
+  </style>
+</head>
 <body>
 
-<h2>Upload the PDF File</h2>
+<!-- Nav Bar -->
+<nav>
+        <div id="logo">Land Registry Portal</div>
 
-<form name='upload_form' method='post' action='/upload_file/'>
-	{% csrf_token %}
-	Owner Name: <input type="text" id="owner_name" name="owner_name">
-	<br>
-	<br>
-	Adhar Number: <input type="text" id="adhar_number" name="adhar_number">
-	<br>
-	<br>
-	Email Id: <input type="Email" name="email_id"/>
-	<br>
-	<br>
-	Property Name: <input type="text" id="property_name" name="property_name">
-	<br>
-	<br>
-	Property Paper: <input type="file" id="property_paper" name="property_paper">
-	<br>
-	<br>
-	<input type='submit' value='Upload'>
-</form>
-
-<script>
-function myFunction() {
+        <label for="drop" class="toggle">Menu</label>
+        <input type="checkbox" id="drop" />
+            <ul class="menu">
+                <li><a href="/land_registry_portal_index/">Home</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
+                <li>
+					<label for="drop-1" class="toggle">{{user}}+</label>
+					<a href="#">{{user}}</a>
+					<input type="checkbox" id="drop-1"/>
+					<ul>
+						<li><a href="/logout/">Log Out</a></li>
+					</ul> 
+                </li>
+            </ul>
+        </nav>
+<!-- Nav Bar -->
   
-}
-</script>
+<!-- Main page https://cdn.nohat.cc/thumb/f/720/5557286722338816.jpg
+               https://chitralekha.com/chitralemag/wp-content/uploads/2019/04/bigstock-144968120-900x444-324x160.jpg--> 
+<div class="container-fluid">
 
+
+<div class = "row">
+
+		<div class = 'col-md-3'>
+		</div>
+
+		<div class = 'col-md-6' style = "margin-top: 2%">
+		
+			<form class='upload_form' method='post' action='/upload_file/'>
+				{% csrf_token %}
+				<div class="flex-row">
+					<div class="col-50">Owner Name</div><div class="col-50"><input type='text' id="owner_name" name="owner_name" class='lf--input' placeholder = "Owner name"></div>
+				</div>
+				<div class="flex-row">
+					<div class="col-50">Adhar Number</div><div class="col-50"><input type="text" id="adhar_number" name="adhar_number" class='lf--input' placeholder = "Adhar Number"></div>
+				</div>
+				<div class="flex-row">
+					<div class="col-50">Email Id</div><div class="col-50"><input type="Email" name="email_id" class='lf--input' placeholder = "Email ID"></div>
+				</div>
+				<div class="flex-row">
+					<div class="col-50">Property Name</div><div class="col-50"><input type="text" id="property_name" name="property_name" class='lf--input' placeholder = "Property Name"></div>
+				</div>
+				<div class="flex-row">
+					<div class="col-50">Property Paper</div><div class="col-50">
+						<div style="position:relative;">
+							<a class='btn btn-primary' href='javascript:;'>
+								Choose File...
+								<input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="property_paper" id = 'property_paper' size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+							</a>
+							&nbsp;
+							<span class='label label-info' id="upload-file-info"></span>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class='row'>
+					<div class = 'col-md-3'></div>
+					<div class = 'col-md-6'>
+						<input class='lf--submit' type='submit' value='UPLOAD'>
+					</div>
+					<div class = 'col-md-3'></div>
+				</div>
+			</form>
+	
+		</div>
+
+		<div class = 'col-md-3'></div>
+
+	</div>
+
+
+
+</div>
+
+<!-- Main Page-->
 </body>
 </html>

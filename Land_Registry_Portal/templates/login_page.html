@@ -12,9 +12,8 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Lato, sans-serif;
-  //background: url("https://i.loli.net/2019/10/18/buDT4YS6zUMfHst.jpg") 0/cover fixed;
-  background: url("https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/9d90d30e-b44b-496a-9034-e738aa42a030/File/4e8c8a89208cc1005aacafa92a854007/shutterstock_546199567.jpg") 0/cover fixed;
-
+  background:
+  url("https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/9d90d30e-b44b-496a-9034-e738aa42a030/File/4e8c8a89208cc1005aacafa92a854007/shutterstock_546199567.jpg") 0/cover fixed;
 }
 
 .login-form {
@@ -28,6 +27,7 @@ body {
   box-shadow: 0 0.4px 0.6px rgba(0, 0, 0, 0.141), 0 1px 1.3px rgba(0, 0, 0, 0.202), 0 1.9px 2.5px rgba(0, 0, 0, 0.25), 0 3.4px 4.5px rgba(0, 0, 0, 0.298), 0 6.3px 8.4px rgba(0, 0, 0, 0.359), 0 15px 20px rgba(0, 0, 0, 0.5);
 }
 .login-form h1 {
+  text-align: center;
   margin: 0 0 0.3em 0;
   padding: 12px 0;
   font-size: 2.5em;
@@ -109,6 +109,7 @@ body {
   transform: translateX(100%);
 }
 
+/*blinking*/
 .blinking{
     animation: blinkingText 1.4s infinite;
 }
@@ -119,17 +120,19 @@ body {
     99%{    color: transparent;  }
     100%{   color: red;    }
 }
+
   </style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<form class="login-form" action="/login/" method="post">
+<div class="login-form">
+<form action="/login/" method="post">
 	{% csrf_token %}
     <h1>Login</h1>
 	<div>
 	{% if error %}
 		<!-- <span class="blinking"><h3>&#9888; {{ error }} &#9888;</h3></span> -->
-		<span style="color:red"><h3>&#9888; {{ error }} &#9888;</h3></span>
+		<span style="color:red;text-align: center;"><h3>&#9888; {{ error }} &#9888;</h3></span>
 	{% endif %}
 	</div>
     <div class="form-field">
@@ -142,8 +145,15 @@ body {
         <input type="password" name="password" id="password" class="form-field" placeholder=" " required>
         <label for="password">Password</label>
     </div>
-  <button type="submit" value="Login" class="btn">Login</button>
+	<button type="submit" value="Login" class="btn">Login</button>
 </form>
+<hr style="width: 280px">Or
+<form action="/register/" method="get">
+	{% csrf_token %}
+	<button type="submit" class="btn" style="width: 280px">Sign up</button>
+</form>
+</div>
+
 <!-- partial -->
   
 </body>

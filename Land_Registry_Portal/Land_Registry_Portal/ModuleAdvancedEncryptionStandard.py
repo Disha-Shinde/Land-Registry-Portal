@@ -4,14 +4,14 @@ import glob
 import traceback
 
 
-def generate_key_for_advanced_encryption_standard(property_name):
+def generate_key_for_advanced_encryption_standard(property_name, extension):
     try:
         #generate key
         key = Fernet.generate_key()
         
         db_obj = db_info.Land_Registry_Portal()
-        query = 'INSERT INTO land_registry_portal.tbl_advanced_encryption_standard(property_name, encryption_key) VALUES (%s, %s);'
-        args = (property_name, key.decode('utf-8'))
+        query = 'INSERT INTO land_registry_portal.tbl_advanced_encryption_standard(property_name, encryption_key, extension) VALUES (%s, %s, %s);'
+        args = (property_name, key.decode('utf-8'), extension)
         db_obj.insert_db(query, args)
         
         query = 'SELECT property_id FROM land_registry_portal.tbl_advanced_encryption_standard WHERE encryption_key = %s;'
@@ -28,11 +28,12 @@ def generate_key_for_advanced_encryption_standard(property_name):
 def encrypt_file(file_name, property_name):
     try:
         extension = file_name.split('.')[1]
+        
         #encryption
         with open ('Land_Registry_Portal/Encrypted_Property_Papers/'+file_name, 'rb') as f:
             data = f.read()
 
-        property_id, key = generate_key_for_advanced_encryption_standard(property_name)
+        property_id, key = generate_key_for_advanced_encryption_standard(property_name, extension)
         
         fernet = Fernet(key)
         encrypted = fernet.encrypt(data)
