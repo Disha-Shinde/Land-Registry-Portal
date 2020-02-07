@@ -30,5 +30,6 @@ urlpatterns = [
     path('upload_file/', views.upload_file, name='upload_file'),
     path('retrieve_details/', views.retrieve_details, name='retrieve_details'),
     path('retrieve_file/', views.retrieve_file, name='retrieve_file'),
+    path('transact/', views.transact, name='transact'),
     
 ]

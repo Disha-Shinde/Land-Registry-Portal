@@ -139,6 +139,72 @@ def retrieve_file(request):
         return HttpResponseForbidden('Error registering <br> '+ str(e)+'<br>contact administrator')
         
         
+def search_property_by_address(request):
+    try:
+        if not request.user.is_authenticated:
+            return render(request, 'login_page.html',{ 'error': 'You must Login first' })
+        
+        user = str(request.user)
+        
+        if request.method == 'POST':
+            # district_name = request.POST.get("district_name")  
+            # city_name = request.POST.get("city_name")
+            # area_name = request.POST.get("area_name")          
+            # plot_number = request.POST.get("plot_number")
+            # sector_number = request.POST.get("sector_number") 
+
+            property_id, property_name, owner_name, adhar_number,email, registration_time = ModuleSearchProperty.search_property(district_name, city_name, area_name, plot_number, sector_number)
+            
+            return render(request,'search_report.html', { 'user': user })
+            
+        else:
+            return render(request,'search_property.html', { 'user': user })
+        
+    except BaseException as e:
+        return HttpResponseForbidden('Error registering <br> '+ str(e)+'<br>contact administrator')
+        
+        
+def transact(request):
+    try:
+        if not request.user.is_authenticated:
+            return render(request, 'login_page.html',{ 'error': 'You must Login first' })
+        
+        user = str(request.user)
+        return render(request,'transaction.html', { 'user': user })
+        
+    except BaseException as e:
+        return HttpResponseForbidden('Error registering <br> '+ str(e)+'<br>contact administrator')
+        
+            
+def trasaction(request):
+    try:
+        if not request.user.is_authenticated:
+            return render(request, 'login_page.html', { 'error': 'You must Login first' })
+        
+        user = str(request.user)
+        
+        if request.method == 'POST':
+            seller_name = request.POST.get("seller_name")  
+            seller_adhar_number = request.POST.get("seller_adhar_number")
+            seller_email_id = request.POST.get("seller_email_id")
+            
+            property_name = request.POST.get("property_name")
+            
+            buyer_name = request.POST.get("buyer_name")  
+            buyer_adhar_number = request.POST.get("buyer_adhar_number")
+            buyer_email_id = request.POST.get("buyer_email_id")
+            buyer_verification = request.POST.get("buyer_verification")
+
+            ModuleTransactProperties.update_owner(seller_name, seller_adhar_number, seller_email_id, property_name, buyer_name, buyer_adhar_number, buyer_email_id, buyer_verification, file_name)
+            
+            return render(request, 'successful_msg_page.html', { 'user': user, 'msg': 'All the details are successfully uploaded to the Land Registry Portal!' })        
+        else:
+            return redirect('/land_registry_portal_index/')   
+                  
+    except BaseException as e:
+        return HttpResponseForbidden('Error registering <br> '+ str(e)+'<br>contact administrator')
+        
+        
 def logout_user(request):
     logout(request)
     return render(request, 'login_page.html', { 'error': 'You are logged out!' })
