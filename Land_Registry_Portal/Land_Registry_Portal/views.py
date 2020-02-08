@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from Land_Registry_Portal import ModuleAdvancedEncryptionStandard
 from Land_Registry_Portal import ModuleInterPlanetaryFileSystem
 from Land_Registry_Portal import ModuleLandRegistryPortal
+from Land_Registry_Portal import ModuleTransactProperties
 
 
 def index(request):
@@ -176,7 +177,7 @@ def transact(request):
         return HttpResponseForbidden('Error registering <br> '+ str(e)+'<br>contact administrator')
         
             
-def trasaction(request):
+def transaction(request):
     try:
         if not request.user.is_authenticated:
             return render(request, 'login_page.html', { 'error': 'You must Login first' })
@@ -188,16 +189,21 @@ def trasaction(request):
             seller_adhar_number = request.POST.get("seller_adhar_number")
             seller_email_id = request.POST.get("seller_email_id")
             
-            property_name = request.POST.get("property_name")
+            property_name = request.POST.get("seller_property_name")
             
             buyer_name = request.POST.get("buyer_name")  
             buyer_adhar_number = request.POST.get("buyer_adhar_number")
             buyer_email_id = request.POST.get("buyer_email_id")
-            buyer_verification = request.POST.get("buyer_verification")
-
-            ModuleTransactProperties.update_owner(seller_name, seller_adhar_number, seller_email_id, property_name, buyer_name, buyer_adhar_number, buyer_email_id, buyer_verification, file_name)
+            #buyer_verification = request.POST.get("buyer_verification")
+            buyer_verification = True
             
-            return render(request, 'successful_msg_page.html', { 'user': user, 'msg': 'All the details are successfully uploaded to the Land Registry Portal!' })        
+            file_name = request.POST.get("buyer_property_paper")
+            
+            #print(seller_name, seller_adhar_number, seller_email_id, property_name, buyer_name, buyer_adhar_number, buyer_email_id, buyer_verification, file_name)
+
+            msg = ModuleTransactProperties.update_owner(seller_name, seller_adhar_number, seller_email_id, property_name, buyer_name, buyer_adhar_number, buyer_email_id, buyer_verification, file_name)
+            
+            return render(request, 'successful_msg_page.html', { 'user': user, 'msg': msg })        
         else:
             return redirect('/land_registry_portal_index/')   
                   

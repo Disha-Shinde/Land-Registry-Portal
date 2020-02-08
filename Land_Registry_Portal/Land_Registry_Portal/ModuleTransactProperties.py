@@ -55,17 +55,25 @@ def verify_buyer_and_add_to_database(buyer_name, buyer_adhar_number, buyer_email
         
 
 def update_owner(seller_name, seller_adhar_number, seller_email_id, property_name, buyer_name, buyer_adhar_number, buyer_email_id, buyer_verification, file_name):
-    
+
     seller_verification, seller_property_id = verify_seller(seller_name, seller_adhar_number, seller_email_id, property_name)
-    print(seller_verification, seller_property_id)
+    #print(seller_verification, seller_property_id)
     verify_buyer_and_add_to_database(buyer_name, buyer_adhar_number, buyer_email_id, buyer_verification)
     
+    approved = False
     if seller_verification == True:
         buyer_property_id, encrypted_file = ModuleAdvancedEncryptionStandard.encrypt_file(file_name, property_name)
         #print(buyer_property_id, encrypted_file)
         ModuleInterPlanetaryFileSystem.upload_file_in_ipfs(buyer_property_id, property_name, encrypted_file)
         ModuleLandRegistryPortal.update_database(buyer_name, buyer_adhar_number, buyer_email_id, property_name, buyer_property_id)
-        ModuleSmartContracts.update_details_to_blockchain(seller_name, seller_adhar_number, seller_email_id, buyer_name, buyer_adhar_number, buyer_email_id, property_name, seller_property_id, buyer_property_id)
+        approved = ModuleSmartContracts.update_details_to_blockchain(seller_name, seller_adhar_number, seller_email_id, buyer_name, buyer_adhar_number, buyer_email_id, property_name, seller_property_id, buyer_property_id)
+        
+    if approved == True:
+        msg = 'Property transfered under the name of buyer successfully!'
+    else:
+        msg = 'Property can\'t be transfered. Transaction failed!'
+        
+    return msg
         
         
 #update_owner('abc', '123412341234', 'abc@gmail.com', 'prop7', 'xyz', '432143214321', 'xyz@gmail.com', True, 'sample.txt')

@@ -34,115 +34,115 @@
 		/* Main */
 		
 		.upload_form {
-  width: 100%;
-  padding: 2em;
-  position: relative;
-  background-color: #254441;
-}
-.upload_form:before {
-  content: '';
-  position: absolute;
-}
-@media screen and (min-width: 600px) {
-  .upload_form {
-    width: 100%;
-  }
-}
+		  width: 100%;
+		  padding: 2em;
+		  position: relative;
+		  background-color: #254441;
+		}
+		.upload_form:before {
+		  content: '';
+		  position: absolute;
+		}
+		@media screen and (min-width: 600px) {
+		  .upload_form {
+			width: 100%;
+		  }
+		}
 
-.flex-row {
-  display: -webkit-box;
-  display: flex;
-  margin-bottom: 1em;
-}
+		.flex-row {
+		  display: -webkit-box;
+		  display: flex;
+		  margin-bottom: 1em;
+		}
 
-.lf--input {
-  height: 40px;
-  padding: 1em;
-  border-radius: 25px;
-  border-color: #8f8f8f;
-  color: #8f8f8f;
-  font-size: 1rem;
-  width: 350px;
-  float: right;
-}
-.lf--input:focus {
-  outline: none;
-  -webkit-transition: -webkit-transform .15s ease;
-  transition: -webkit-transform .15s ease;
-  transition: transform .15s ease;
-  transition: transform .15s ease, -webkit-transform .15s ease;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
+		.lf--input {
+		  height: 40px;
+		  padding: 1em;
+		  border-radius: 25px;
+		  border-color: #8f8f8f;
+		  color: #8f8f8f;
+		  font-size: 1rem;
+		  width: 350px;
+		  float: right;
+		}
+		.lf--input:focus {
+		  outline: none;
+		  -webkit-transition: -webkit-transform .15s ease;
+		  transition: -webkit-transform .15s ease;
+		  transition: transform .15s ease;
+		  transition: transform .15s ease, -webkit-transform .15s ease;
+		  -webkit-transform: scale(1.1);
+				  transform: scale(1.1);
+		}
 
-.lf--submit {
-  display: block;
-  padding: 7px;
-  width: 270px;
-  height: 50px;
-  background-color: #212121;
-  border-color: #212121;
-  border-radius: 25px;
-  color: #fff;
-  cursor: pointer;
-  font-size: .75em;
-  font-weight: 600;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-}
-.lf--submit:focus {
-  outline: none;
-  -webkit-transition: -webkit-transform .15s ease;
-  transition: -webkit-transform .15s ease;
-  transition: transform .15s ease;
-  transition: transform .15s ease, -webkit-transform .15s ease;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
+		.lf--submit {
+		  display: block;
+		  padding: 7px;
+		  width: 270px;
+		  height: 50px;
+		  background-color: #212121;
+		  border-color: #212121;
+		  border-radius: 25px;
+		  color: #fff;
+		  cursor: pointer;
+		  font-size: .75em;
+		  font-weight: 600;
+		  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+		}
+		.lf--submit:focus {
+		  outline: none;
+		  -webkit-transition: -webkit-transform .15s ease;
+		  transition: -webkit-transform .15s ease;
+		  transition: transform .15s ease;
+		  transition: transform .15s ease, -webkit-transform .15s ease;
+		  -webkit-transform: scale(1.1);
+				  transform: scale(1.1);
+		}
 
-::-webkit-input-placeholder {
-  color: #8f8f8f;
-}
+		::-webkit-input-placeholder {
+		  color: #8f8f8f;
+		}
 
-::-moz-placeholder {
-  color: #8f8f8f;
-}
+		::-moz-placeholder {
+		  color: #8f8f8f;
+		}
 
-:-ms-input-placeholder {
-  color: #8f8f8f;
-}
+		:-ms-input-placeholder {
+		  color: #8f8f8f;
+		}
 
-::-ms-input-placeholder {
-  color: #8f8f8f;
-}
+		::-ms-input-placeholder {
+		  color: #8f8f8f;
+		}
 
-::placeholder {
-  color: #8f8f8f;
-}
+		::placeholder {
+		  color: #8f8f8f;
+		}
 
 
-.col-50
-{
-    width: 20%;
-    float:left;
-    margin-top: 5px;
-}
+		.col-50
+		{
+			width: 20%;
+			float:left;
+			margin-top: 5px;
+		}
 
-.col-50
-{
-    width: 80%;
-    float:left;
-    margin-top: 5px;
-}
+		.col-50
+		{
+			width: 80%;
+			float:left;
+			margin-top: 5px;
+		}
 
-.btn-primary, .btn-primary:hover {
-	background-color: #212121;
-	border-radius: 20px;
-	border-color: #212121;
-}
-.label-info {
-	background-color: #212121;
-	font-size: 10px;
-}
+		.btn-primary, .btn-primary:hover {
+			background-color: #212121;
+			border-radius: 20px;
+			border-color: #212121;
+		}
+		.label-info {
+			background-color: #212121;
+			font-size: 10px;
+		}
 		
 		/* Main */
 	</style>
@@ -188,43 +188,49 @@
 
 			<div class = 'col-md-6' style = "margin-top: 2%">
 		
-				<form class='upload_form' method='post' action='/upload_file/'>
+				<form class='upload_form' method='post' action='/transaction/'>
 					{% csrf_token %}
 					<center><h2>SELLER DETAILS</h2></center><br>	
 					<div class="flex-row">
-						<div class="col-50">Seller Name</div><div class="col-50"><input type='text' id="owner_name" name="owner_name" class='lf--input' placeholder = "Owner name"></div>
+						<div class="col-50">Seller Name</div><div class="col-50"><input type='text' id="seller_name" name="seller_name" class='lf--input' placeholder = "Owner name"></div>
 					</div>
 					<div class="flex-row">
-						<div class="col-50">Adhar Number</div><div class="col-50"><input type="text" id="adhar_number" name="adhar_number" class='lf--input' placeholder = "Adhar Number"></div>
+						<div class="col-50">Adhar Number</div><div class="col-50"><input type="text" id="seller_adhar_number" name="seller_adhar_number" class='lf--input' placeholder = "Adhar Number"></div>
 					</div>
 					<div class="flex-row">
-						<div class="col-50">Email Id</div><div class="col-50"><input type="Email" name="email_id" class='lf--input' placeholder = "Email ID"></div>
+						<div class="col-50">Email Id</div><div class="col-50"><input type="Email" id="seller_email_id" name="seller_email_id" class='lf--input' placeholder = "Email ID"></div>
 					</div>
 					<div class="flex-row">
-						<div class="col-50">Property Name</div><div class="col-50"><input type="text" id="property_name" name="property_name" class='lf--input' placeholder = "Property Name"></div>
+						<div class="col-50">Property Name</div><div class="col-50"><input type="text" id="seller_property_name" name="seller_property_name" class='lf--input' placeholder = "Property Name"></div>
 					</div>
 					
 					<br>
 					<center><h2>BUYER DETAILS</h2></center><br>	
 					<div class="flex-row">
-						<div class="col-50">Buyer Name</div><div class="col-50"><input type='text' id="owner_name" name="owner_name" class='lf--input' placeholder = "Owner name"></div>
+						<div class="col-50">Buyer Name</div><div class="col-50"><input type='text' id="buyer_name" name="buyer_name" class='lf--input' placeholder = "Owner name"></div>
 					</div>
 					<div class="flex-row">
-						<div class="col-50">Adhar Number</div><div class="col-50"><input type="text" id="adhar_number" name="adhar_number" class='lf--input' placeholder = "Adhar Number"></div>
+						<div class="col-50">Adhar Number</div><div class="col-50"><input type="text" id="buyer_adhar_number" name="buyer_adhar_number" class='lf--input' placeholder = "Adhar Number"></div>
 					</div>
 					<div class="flex-row">
-						<div class="col-50">Email Id</div><div class="col-50"><input type="Email" name="email_id" class='lf--input' placeholder = "Email ID"></div>
+						<div class="col-50">Email Id</div><div class="col-50"><input type="Email" id="buyer_email_id" name="buyer_email_id" class='lf--input' placeholder = "Email ID"></div>
 					</div>
 					<div class="flex-row">
-						<div class="col-50">Property Name</div><div class="col-50"><input type="text" id="property_name" name="property_name" class='lf--input' placeholder = "Property Name"></div>
+						<div class="col-50">Property Paper</div><div class="col-50">
+							<div style="position:relative;">
+								<a class='btn btn-primary' href='javascript:;'>
+									Choose File...
+									<input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="buyer_property_paper" id = 'buyer_property_paper' size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+								</a>
+								&nbsp;
+								<span class='label label-info' id="upload-file-info"></span>
+							</div>
+						</div>
+						
 					</div>
 					
-					<div class='row'>
-						<div class = 'col-md-3'></div>
-						<div class = 'col-md-6'>
-							<input class='lf--submit' type='submit' value='UPLOAD'>
-						</div>
-						<div class = 'col-md-3'></div>
+					<div style="margin-left: 30%">
+						<input class='lf--submit' type='submit' value='VERIFY & TRANSACT'>
 					</div>
 				</form>
 	

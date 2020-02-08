@@ -102,7 +102,7 @@ def update_details_to_blockchain(seller_name, seller_adhar_number, seller_email_
             tx_hash = contract.functions.add_details(buyer_property_id, str(buyer_hash)).transact({"from": '0xC3777FdDe7B3CaEa4ae874D7cb94d1405b113eFd'})
             web3.eth.waitForTransactionReceipt(tx_hash)
             
-        return True
+        return approved
         
 
     
