@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+	<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.jqueryui.min.css">
+	<link href="https://cdn.datatables.net/rowgroup/1.1.1/css/rowGroup.jqueryui.min.css">
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+ 	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+    $('#example').DataTable(
+     {
+        order: [[2, 'asc']],
+        rowGroup: {
+            dataSrc: 2
+      },
+      bAutoWidth: false, 
+     
+  		aoColumns : [
+   		 { sWidth: '20%' },
+    
+   		 { sWidth: '10%' }
+ 	 ],
+
+    "bLengthChange": false,
+   
+    
+    } );
+} )
+
+
+
+
+	</script>
+
+	<!--<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css'>-->
+	<style>
+		/* Navbar */
+		body {
+			background: #212121;
+			line-height: 32px;
+			color: #ffffff;
+			margin: 0;
+			padding: 0;
+			word-wrap:break-word !important;
+			font-family: 'Open Sans', sans-serif;
+		}
+		nav { 
+			margin:0;
+			padding: 0;
+			background-color: #254441;
+		}
+		.navbar .dropdown-menu a:hover {
+			color: #616161 !important;
+		}
+		.darken-grey-text {
+			color: #2E2E2E;
+		}
+		#city_name, #district_name,#area_name,#road_name,#sector_number,#plot_number {
+			width:80%;
+			margin-top: 10px;
+			margin-bottom: 20px;
+			
+
+    border-color: rgba(0, 0, 0, .14);
+		}
+		#city_name:hover,#district_name:hover,#area_name:hover,#road_name:hover,#sector_number:hover,#plot_number:hover{
+			border-color: #0040ff;
+		}
+		#search_button{
+			margin-top: 20px;
+			border:1px solid;
+			margin-left: 20%;
+			border-radius: 12px;
+			width: 40%;
+			text-align: center;
+			margin-bottom: 50px;
+
+		}
+		#search_button:hover{
+			background-color:#254441;
+			color:white;
+			
+		}
+		.btn{
+			text-align: left;
+		}
+
+	.btn::before {
+	  position: absolute;
+	  content: "";
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background: linear-gradient(120deg, transparent, rgba(51, 152, 219, 0.5), transparent);
+	  transform: translateX(-100%);
+	  transition: 0.5s;
+	  
+	}
+	.btn:hover {
+	  box-shadow: 0 0 20px 10px #254441;
+	}
+
+	.button:hover {
+	  box-shadow: 0 0 20px 10px #254441;
+	}
+
+	.btn:hover::before {
+	  transform: translateX(100%);
+
+	}
+
+.dataTables_filter {
+display: none;
+}
+
+	.button {
+	  background-color: #254441;
+	  border: none;
+	  color: white;
+	  padding: 10px 10px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  cursor: pointer;
+	  width: 20%;
+	  border-radius: 30px;
+	  margin-left: 40%;
+	  margin-bottom: 10px;
+	  margin-top: 10px;
+	  border: 1px solid white;
+	}
+	.dataTables thead tr td {
+    min-height: 40px; /* or whatever height you need to make them all consistent */
+}
+
+
+	</style>
+</head>
+<body>
+<body class="hm-gradient">      
+	<!--Navbar -->
+	<nav class="mb-4 navbar navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" href="#">Land Registry Portal</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/land_registry_portal/"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"><i class="fa fa-envelope"></i> Contact</a>
+				</li>
+				<li class="nav-item">	
+					<a class="nav-link" href="#"><i class="fa fa-envelope"></i> About</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile </a>
+					<div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+						<a class="dropdown-item" href="#"><i class="fa fa-user"></i> {{ user }}</a>
+						<a class="dropdown-item" href="/logout/">Log out</a>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</nav>
+	
+		
+<div class="container-fluid">
+		<div  style = "margin-top: 2%" ; >
+			<form  method='post' action='/upload_file/'>
+				<div class ="row">
+					<div class ='col-md-4'>District
+					<input type='text' id="district_name" name="district_name" class="btn" placeholder="District" >
+					</div>
+					<div class ='col-md-4' >City
+					<input type='text' id="city_name" name="city_name" class="btn" placeholder="City" >
+					</div>
+					<div class ='col-md-4'>Area
+					<input type='text' id="area_name" name="area_name" class="btn"placeholder="Area"  >
+					</div>
+				</div>
+				<div class="row">
+					<div class ='col-md-4'>Sector Number
+						<input type='text' id="sector_number" name="sector_number" class="btn" placeholder="Sector Number" >
+					</div>
+					<div class ='col-md-4'>Road
+						<input type='text' id="road_name" name="road_name" class="btn" placeholder="Road"  >
+					</div>
+					<div class ='col-md-4'>Plot Number
+						<input type='text' id="plot_number" name="plot_number" class="btn" placeholder="Plot Number"  >
+					</div>
+				</div>
+					<div class="row">
+					<div class='col-md-4'></div>
+					<div class='col-md-4'>
+						<input  type='submit' id="search_button" class="btn" value='SEARCH' >
+					</div>
+					<div class='col-md-4'></div>
+					</div>
+			</form>
+		</div>
+</div>
+
+<div class="container-fluid">
+	<table id="example" border="1"  style="width:100%">
+        <thead>
+            <tr>
+                <td height="50px" style="background-color:#254441;text-align:center;">Property Name</th><br>
+                <td height="50px" style="background-color:#254441;text-align:center;">View Property</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Prop1<br>dfgjhyjuioujhgfdfxfghjyukghfdssedrfgtvhyuji</td>
+                <td><button type="button" class="button">View</button></td>
+                
+            </tr>
+            <tr>
+                <td>Prop2<br>asdfgrthyujkisdfgthyjuiiujhygtf</td>
+                <td><button type="button" class="button">View</button></td>
+                
+            </tr>
+            <tr>
+                <td>Prop3<br>swqedrgfthyjupoikujhgfds</td>
+                <td><button type="button" class="button">View</button></td>
+                
+            </tr>
+            
+                   
+            
+            
+        </tbody>
+        
+    </table>
+</div>
+
+
+
+	<!--/.Main -->
+
+
+</body>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js'></script>
+</body>
+</html>
