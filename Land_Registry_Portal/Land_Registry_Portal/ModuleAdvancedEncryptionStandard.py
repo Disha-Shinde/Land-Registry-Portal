@@ -31,7 +31,7 @@ def encrypt_file(file_name, property_name):
         extension = file_name.split('.')[1]
         
         #encryption
-        with open ('Land_Registry_Portal/Encrypted_Property_Papers/'+file_name, 'rb') as f:
+        with open ('C:/Users/DISHA/Documents/GitHub/BE Project/Land_Registry_Portal/Land_Registry_Portal/Encrypted_Property_Papers/'+file_name, 'rb') as f:
             data = f.read()
 
         property_id, key = generate_key_for_advanced_encryption_standard(property_name, extension)
@@ -39,13 +39,13 @@ def encrypt_file(file_name, property_name):
         fernet = Fernet(key)
         encrypted = fernet.encrypt(data)
 
-        file_name1 = 'Land_Registry_Portal/Encrypted_Property_Papers/'+str(property_id)+'_'+property_name+'.'+str(extension)+'.encrypted'
+        file_name1 = 'C:/Users/DISHA/Documents/GitHub/BE Project/Land_Registry_Portal/Land_Registry_Portal/Encrypted_Property_Papers/'+str(property_id)+'_'+property_name+'.'+str(extension)+'.encrypted'
         with open(file_name1, 'wb')as f:
             f.write(encrypted)
+        
+        os.remove('C:/Users/DISHA/Documents/GitHub/BE Project/Land_Registry_Portal/Land_Registry_Portal/Encrypted_Property_Papers/'+file_name)
             
-        os.remove('Land_Registry_Portal/Encrypted_Property_Papers/'+file_name)
-            
-        return property_id, file_name
+        return property_id, file_name1
     except:
         traceback.print_exc()
         
