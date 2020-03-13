@@ -2,6 +2,7 @@ from cryptography.fernet import Fernet
 from Land_Registry_Portal import db_info
 import glob
 import traceback
+import os
 
 
 def generate_key_for_advanced_encryption_standard(property_name, extension):
@@ -38,9 +39,11 @@ def encrypt_file(file_name, property_name):
         fernet = Fernet(key)
         encrypted = fernet.encrypt(data)
 
-        file_name = 'Land_Registry_Portal/Encrypted_Property_Papers/'+str(property_id)+'_'+property_name+'.'+str(extension)+'.encrypted'
-        with open(file_name, 'wb')as f:
+        file_name1 = 'Land_Registry_Portal/Encrypted_Property_Papers/'+str(property_id)+'_'+property_name+'.'+str(extension)+'.encrypted'
+        with open(file_name1, 'wb')as f:
             f.write(encrypted)
+            
+        os.remove('Land_Registry_Portal/Encrypted_Property_Papers/'+file_name)
             
         return property_id, file_name
     except:
@@ -64,7 +67,7 @@ def extract_key_for_decryption(property_id):
 def decrypt_file(property_id):
     try:        
         #decryption
-        file_name = glob.glob('F:/BE Project/Land_Registry_Portal/Land_Registry_Portal/Decrypted_Property_Papers/'+str(property_id)+'_*')
+        file_name = glob.glob('C:/Users/DISHA/Documents/GitHub/BE Project/Land_Registry_Portal/Land_Registry_Portal/Decrypted_Property_Papers/'+str(property_id)+'_*')
         file_name = file_name[0].split('\\')[1]
 
         with open ('Land_Registry_Portal/Decrypted_Property_Papers/'+file_name, 'rb') as f:
@@ -82,8 +85,3 @@ def decrypt_file(property_id):
         return file_name
     except:
         traceback.print_exc()
-        
-       
-
-#encrypt_file('sample.txt')
-#decrypt_file(21)
