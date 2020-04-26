@@ -1,1 +1,95 @@
-{{ msg }}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css'>
+	<style>
+		/* Navbar */
+		body {
+			background: #212121;
+			line-height: 32px;
+			color: #ffffff;
+			margin: 0;
+			padding: 0;
+			word-wrap:break-word !important;
+			font-family: 'Open Sans', sans-serif;
+		}
+		nav { 
+			margin:0;
+			padding: 0;
+			background-color: #254441;
+		}
+		.navbar .dropdown-menu a:hover {
+			color: #616161 !important;
+		}
+		.darken-grey-text {
+			color: #2E2E2E;
+		}
+		/* Navbar */
+		
+		/* Main */
+		
+		.center-screen {
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  align-items: center;
+		  text-align: center;
+		  min-height: 100vh;
+		  margin-bottom: 10px;
+		}
+		
+		/* Main */
+	</style>
+</head>
+<body>
+<body class="hm-gradient">      
+	<!--Navbar -->
+	<nav class="mb-4 navbar navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" href="#">Land Registry Portal</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/land_registry_portal_index/"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"><i class="fa fa-envelope"></i> Contact</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"><i class="fa fa-envelope"></i> About</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile </a>
+					<div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+						<a class="dropdown-item" href="#"><i class="fa fa-user"></i> {{ user }}</a>
+						<a class="dropdown-item" href="/logout/">Log out</a>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</nav>
+	<!--/.Navbar -->
+	
+	<!--Main -->
+
+	<div class="center-screen">
+		<p style="font-size: 35px">{{ msg }}
+	</div>
+
+	<!--/.Main -->
+
+
+</body>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js'></script>
+</body>
+</html>

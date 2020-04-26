@@ -8,6 +8,7 @@ def view_property(property_name):
     property_details = []
     
     db_obj = db_info.Land_Registry_Portal()
+    
     query = 'SELECT current_owner_id, list_of_property_id FROM land_registry_portal.tbl_land_registry_portal_details WHERE property_name = %s;'
     args = (property_name)
     res = db_obj.select_db(query, args)
@@ -29,8 +30,8 @@ def view_property(property_name):
     res = db_obj.select_db(query, args)
     property_hash = res[0]['property_paper_hash']
 
-    ModuleInterPlanetaryFileSystem.retrieve_file_from_ipfs(property_id, property_name, property_hash)
-    decrypted_file = ModuleAdvancedEncryptionStandard.decrypt_file(property_id)
+    #ModuleInterPlanetaryFileSystem.retrieve_file_from_ipfs(property_id, property_name, property_hash)
+    #decrypted_file = ModuleAdvancedEncryptionStandard.decrypt_file(property_id)
 
     property_details.append(property_id) 
     property_details.append(property_name)
@@ -40,10 +41,9 @@ def view_property(property_name):
     property_details.append(registration_time)
     
     return property_details
+      
     
-    
-    
-def search_detailed_property_info(plot_number, sector_number, road_name, area_name, city_name, state_name, country_name, pin_code):
+def retrieve_property_details_by_address(plot_number, sector_number, road_name, area_name, city_name, state_name, country_name, pin_code):
 
     property_details = []
     args_list = []
@@ -98,7 +98,57 @@ def search_detailed_property_info(plot_number, sector_number, road_name, area_na
     return property_details
 
 
-#print(search_detailed_property_info('pune', 'pune', '', 624, 18, '')    )
+def retrieve_property_details_by_name(owner_name, adhar_number, email_id):
+    try:
+        property_details = []
+        args_list = []
+        
+        db_obj = db_info.Land_Registry_Portal()
+        
+        # Check whether owner already exists in database or not.
+        query = 'SELECT owner_id FROM land_registry_portal.tbl_owner_details WHERE '
     
-# search_property_by_address('pune', 'pune', 'shivtej nagar', 624, 18)
+        if owner_name == '' and adhar_number == '' and email_id == '':
+            return property_details
+        else:
+            if owner_name != '':
+                query += 'owner_name = %s AND '
+                args_list.append(owner_name)
+            if adhar_number != '':
+                query += 'adhar_number = %s AND '
+                args_list.append(adhar_number)
+            if email_id != '':
+                query += 'email = %s AND '
+                args_list.append(email_id)
+                     
+            query = query[: -5] + ';'
+            
+        args = tuple(args_list)
+        owner_id = db_obj.select_db(query, args)
+    
+        if owner_id == ():
+            return property_details
+            
+        else:
+            # Owner already exixts in database. Directly extract the owner id.
+            owner_id = owner_id[0]['owner_id']
+            
+            query = 'SELECT property_name FROM land_registry_portal.tbl_land_registry_portal_details WHERE current_owner_id = %s;'
+            args = (owner_id)
+            property_name = db_obj.select_db(query, args)
+            
+            if property_name == ():
+                return property_details                
+            else:           
+                for d in property_name:                    
+                    query = 'SELECT * FROM land_registry_portal.tbl_property_address_details where property_name = %s;'
+                    args = (d['property_name'])
+                    res = db_obj.select_db(query, args)
+                                        
+                    address = 'Plot no. : ' + str(res[0]['plot_number']) + ', Sector no. : ' + str(res[0]['sector_number']) + ', ' + res[0]['road_name'] + ', ' + res[0]['area_name'] + ', ' + res[0]['city_name'] + ', ' + res[0]['state_name'] + ', ' + res[0]['country_name'] + ' - ' + str(res[0]['pin_code'])
+                    
+                    property_details.append(d['property_name']+';'+address)
 
+        return property_details        
+    except:
+        return property_details

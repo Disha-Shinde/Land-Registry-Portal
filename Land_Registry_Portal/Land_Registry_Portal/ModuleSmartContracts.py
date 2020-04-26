@@ -38,9 +38,9 @@ def add_details_to_blockchain(property_id, property_name):
     web3 = Web3(Web3.HTTPProvider(url))
     if web3.isConnected():
 
-        abi = json.loads('[{"constant":false,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"},{"internalType":"string","name":"_owner_hash","type":"string"}],"name":"add_details","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"bool","name":"_auth_1","type":"bool"},{"internalType":"bool","name":"_auth_2","type":"bool"},{"internalType":"int256","name":"_seller_property_id","type":"int256"},{"internalType":"string","name":"_seller_hash","type":"string"}],"name":"approve_details","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"getHash","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"}]')
+        abi = json.loads('[{"constant":false,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"},{"internalType":"string","name":"_owner_hash","type":"string"}],"name":"add_details","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_seller_property_id","type":"int256"},{"internalType":"string","name":"_seller_hash","type":"string"}],"name":"approve_details","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"getHash","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"getStatus","outputs":[{"internalType":"int256","name":"","type":"int256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"revoke_ownership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]')
 
-        address = web3.toChecksumAddress('0xd44236D0F34c1cF08Ab86FEB84691FecC90D1447')
+        address = web3.toChecksumAddress('0x5f50715071EBa9adA24971FC82347a164cF233C1')
         
         contract = web3.eth.contract(address = address, abi = abi)
         
@@ -50,6 +50,24 @@ def add_details_to_blockchain(property_id, property_name):
         #hash = contract.functions.getHash(web3.toInt(property_id)).call()
         #print(hash)
         
+
+def verify_seller(seller_property_id):
+
+    url = 'http://127.0.0.1:7545'
+    web3 = Web3(Web3.HTTPProvider(url))
+    if web3.isConnected():
+
+        abi = json.loads('[{"constant":false,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"},{"internalType":"string","name":"_owner_hash","type":"string"}],"name":"add_details","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_seller_property_id","type":"int256"},{"internalType":"string","name":"_seller_hash","type":"string"}],"name":"approve_details","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"getHash","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"getStatus","outputs":[{"internalType":"int256","name":"","type":"int256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"revoke_ownership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]')
+
+        address = web3.toChecksumAddress('0x5f50715071EBa9adA24971FC82347a164cF233C1')
+        
+        contract = web3.eth.contract(address = address, abi = abi)
+        
+        status = contract.functions.getStatus(int(seller_property_id)).call()
+        print(status)
+            
+        return status
+
         
 def update_details_to_blockchain(seller_name, seller_adhar_number, seller_email_id, buyer_name, buyer_adhar_number, buyer_email_id, property_name, seller_property_id, buyer_property_id):
 
@@ -89,23 +107,71 @@ def update_details_to_blockchain(seller_name, seller_adhar_number, seller_email_
     web3 = Web3(Web3.HTTPProvider(url))
     if web3.isConnected():
 
-        abi = json.loads('[{"constant":false,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"},{"internalType":"string","name":"_owner_hash","type":"string"}],"name":"add_details","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"bool","name":"_auth_1","type":"bool"},{"internalType":"bool","name":"_auth_2","type":"bool"},{"internalType":"int256","name":"_seller_property_id","type":"int256"},{"internalType":"string","name":"_seller_hash","type":"string"}],"name":"approve_details","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"getHash","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"}]')
+        abi = json.loads('[{"constant":false,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"},{"internalType":"string","name":"_owner_hash","type":"string"}],"name":"add_details","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_seller_property_id","type":"int256"},{"internalType":"string","name":"_seller_hash","type":"string"}],"name":"approve_details","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"getHash","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"getStatus","outputs":[{"internalType":"int256","name":"","type":"int256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"int256","name":"_property_id","type":"int256"}],"name":"revoke_ownership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]')
 
-        address = web3.toChecksumAddress('0xd44236D0F34c1cF08Ab86FEB84691FecC90D1447')
+        address = web3.toChecksumAddress('0x5f50715071EBa9adA24971FC82347a164cF233C1')
         
         contract = web3.eth.contract(address = address, abi = abi)
         
-        approved = contract.functions.approve_details(True, True, int(seller_property_id), str(seller_hash)).call()
+        print(1)
+        approved = contract.functions.approve_details(int(seller_property_id), str(seller_hash)).call()
         print(approved)
         
         if approved == True:
             tx_hash = contract.functions.add_details(buyer_property_id, str(buyer_hash)).transact({"from": '0xC3777FdDe7B3CaEa4ae874D7cb94d1405b113eFd'})
             web3.eth.waitForTransactionReceipt(tx_hash)
+            tx_hash = contract.functions.revoke_ownership(int(seller_property_id)).transact({"from": '0xC3777FdDe7B3CaEa4ae874D7cb94d1405b113eFd'})
+            web3.eth.waitForTransactionReceipt(tx_hash)
             
         return approved
-        
+                
 
+#update_details_to_blockchain('DISHA SHINDE', 432143214321, 'dishashinde17@gmail.com', 'xyz', 432143214321, 'xyz@gmail.com', 'prop21', 49, 53)
+
+'''
+pragma solidity >=0.4.22 <0.6.0;
+
+contract Land_Registry_Portal {
+
+    struct Owner {
+        string owner_hash;
+        int status;
+    }
+   
+    mapping(int => Owner) owner_details;
     
-#add_details_to_blockchain(8, 'prop5')
-
-#update_details_to_blockchain('abc', '123412341234', 'abc@gmail.com', 'xyz', '432143214321', 'xyz@gmail.com', 'prop7', 10, 18)        
+    function add_details(int _property_id, string memory _owner_hash) public {
+        
+        owner_details[_property_id].owner_hash = _owner_hash;
+        owner_details[_property_id].status = 1;
+    }
+    
+    function revoke_ownership(int _property_id) public {
+        
+        owner_details[_property_id].status = 0;
+    }
+    
+    function getHash(int _property_id) public view returns(string memory) {
+        
+        return owner_details[_property_id].owner_hash;
+    }
+    
+    function getStatus(int _property_id) public view returns(int) {
+        
+        return owner_details[_property_id].status;
+    }
+    
+    function approve_details(bool _auth_1, bool _auth_2, int _seller_property_id, string memory _seller_hash) public view returns(bool) {
+        
+        if (_auth_1 == true && _auth_2 == true) {
+        
+            if (keccak256(abi.encodePacked(_seller_hash)) == keccak256(abi.encodePacked(owner_details[_seller_property_id].owner_hash))) {
+                return true;   
+            }
+            return false;
+            
+        }
+    }    
+    
+}
+'''

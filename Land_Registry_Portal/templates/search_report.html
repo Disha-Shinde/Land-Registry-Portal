@@ -32,61 +32,9 @@
 		
 		/* Main */
 		
-		/* Main body */
-
-	.ripple-button1, .ripple-button2, .ripple-button3{
-		position:relative;
-		width:250px;
-		height:75px;
-		background-color: #254441;
-		color:#FFF;
-		border-radius:3px;
-		text-decoration:none;
-		text-align:center;
-		vertical-align:middle;
-		display:table-cell;
-	}
-
-	.wave{
-		position:absolute;
-		width:250px;
-		height:75px;
-		background-color:#FFF;
-		top:0;
-		left:0;
-		transform: scale(0);
-		opacity:0.5;
-	}
-
-	.ripple-button1:hover > .wave, .ripple-button2:hover > .wave, .ripple-button3:hover > .wave{
-		animation: ripple-in 2s;
-	}
-
-	@keyframes ripple-in {
-	 0% {transform: scaleX(0);}
-	 20%{transform: scaleX(1);opacity:0.3;}
-	 100%{transform: scaleX(1);opacity:0;}
-	}
-
-	a {
-	  text-decoration: none !important;
-	  color: white;
-	}
-
-	.img {
-	  margin-right: -15px;
-	  margin-left: -15px;
-	  padding-bottom: 62.5%;
-	  background-position: 50% 50%;
-	  background-repeat: no-repeat;
-	  background-size: cover;
-	}
-	
-	a:hover { 
-		color: white;
-	}
-
-/* Main body */
+		.container{
+			padding:30px;
+		}
 		
 		/* Main */
 	</style>
@@ -125,32 +73,15 @@
 	
 	<!--Main -->
 
-	<div class="container-fluid">
-
-	<div class = "row">
-
-		<div class = 'col-md-8'>
-			<div class="img" style="background-image: url('https://cdn.nohat.cc/thumb/f/720/5557286722338816.jpg'); background-size: 1058px 700px;">
-			</div>
-		</div>
-
-		<div class = 'col-md-4'>
-			<div class="groove" style="margin-top: 30%; margin-left: 25%">
-				<a href="/upload_details/" class="ripple-button1"><div class="wave"></div>Property Registration</a>
-				&nbsp;&nbsp;
-				<a href="/search_property_by_address/" class="ripple-button2"><div class="wave"></div>Search Property By Address</a>
-				&nbsp;&nbsp;
-				<a href="/search_property_by_user_details/" class="ripple-button2"><div class="wave"></div>Search Property By Owner Name</a>
-				&nbsp;&nbsp;
-				<a href="/transact/" class="ripple-button3"><div class="wave"></div>Property Transaction</a>
-			</div>
-		</div>
-
-		<!--<div class = 'col-md-5'></div>-->
-
+	{{property_details}}
+	
+	<div class="container">
+	<!-- <object data="AnnexureD.pdf" type="application/pdf" width="100%" height="100%"> -->
+	  <!-- <p>Alternative text - include a link <a href="AnnexureD.pdf">to the PDF!</a></p> -->
+	<!-- </object> -->
+	<embed src="AnnexureD.pdf" type="application/pdf" width="100%" height="600px"/>
+	
 	</div>
-
-</div>
 
 	<!--/.Main -->
 

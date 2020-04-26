@@ -65,13 +65,13 @@
 		.darken-grey-text {
 			color: #2E2E2E;
 		}
-		#name, #adhar_number, #email_id {
+		#city_name, #district_name, #area_name, #road_name, #sector_number, #plot_number, #state_name, #country_name, #pin_code {
 			width:80%;
 			margin-top: 10px;
 			margin-bottom: 20px;
 			border-color: rgba(0, 0, 0, .14);
 		}
-		#name:hover, #adhar_number:hover, #email_id:hover {
+		#city_name:hover,#district_name:hover,#area_name:hover,#road_name:hover,#sector_number:hover,#plot_number:hover{
 			border-color: #0040ff;
 		}
 		#search_button{
@@ -185,28 +185,43 @@
 		
 <div class="container-fluid">
 		<div  style = "margin-top: 2%" ; >
-			<form  method='post' action='/search_property_by_user_details/'>
+			<form  method='post' action='/search_property_by_address/'>
 				{% csrf_token %}
 				<div class ="row">
-					<div class ='col-md-4'>Name
-						<input type='text' id="name" name="name" class="btn" placeholder="Name"  >
+					<div class ='col-md-3'>Plot Number
+						<input type='text' id="plot_number" name="plot_number" class="btn" placeholder="Plot Number"  >
 					</div>
-					<div class ='col-md-4'>Adhar Number
-						<input type='text' id="adhar_number" name="adhar_number" class="btn" placeholder="Adhar Number" >
+					<div class ='col-md-3'>Sector Number
+						<input type='text' id="sector_number" name="sector_number" class="btn" placeholder="Sector Number" >
 					</div>
-					<div class ='col-md-4'>E-mail ID
-						<input type='text' id="email_id" name="email_id" class="btn" placeholder="E-mail ID"  >
+					<div class ='col-md-3'>Road / Land Mark
+						<input type='text' id="road_name" name="road_name" class="btn" placeholder="Road / Land Mark"  >
 					</div>
-									
+					<div class ='col-md-3'>Area
+						<input type='text' id="area_name" name="area_name" class="btn"placeholder="Area"  >
+					</div>					
 				</div>
-				
 				<div class="row">
+					<div class ='col-md-3'>City
+						<input type='text' id="city_name" name="city_name" class="btn" placeholder="City" >
+					</div>
+					<div class ='col-md-3'>State
+						<input type='text' id="state_name" name="state_name" class="btn" placeholder="State" >
+					</div>
+					<div class ='col-md-3'>Country
+						<input type='text' id="country_name" name="country_name" class="btn" placeholder="Country" >
+					</div>
+					<div class ='col-md-3'>Pin Code
+						<input type='text' id="pin_code" name="pin_code" class="btn" placeholder="Pin Code" >
+					</div>					
+				</div>
+					<div class="row">
 					<div class='col-md-4'></div>
 					<div class='col-md-4'>
 						<input type='submit' id="search_button" class="btn" value='SEARCH' >
 					</div>
 					<div class='col-md-4'></div>
-				</div>
+					</div>
 			</form>
 		</div>
 </div>

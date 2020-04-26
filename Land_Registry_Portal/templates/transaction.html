@@ -77,7 +77,6 @@
 		#msform {
 		  width: 400px;
 		  margin: 50px auto;
-		  text-align: center;
 		  position: relative;
 		}
 
@@ -129,8 +128,9 @@
 		  border: 0 none;
 		  border-radius: 1px;
 		  cursor: pointer;
-		  padding: 10px 5px;
+		  padding: 1px 5px;
 		  margin: 10px 5px;
+		  height: 40px;
 		}
 
 		#msform .action-button:hover,
@@ -175,9 +175,10 @@
 		  color: white;
 		  text-transform: uppercase;
 		  font-size: 9px;
-		  width:50%;
+		  width:22%;
 		  float: left;
 		  position: relative;
+		  margin-left: 10px;
 		}
 
 		#progressbar li:before {
@@ -224,6 +225,13 @@
 		  background: #eee809;
 		  color: #00353b;
 		}
+
+		/* Label */
+		#label {
+			color: black;
+			font-weight: bold;
+			font-size: 12px;
+		}
 		
   </style>
 </head>
@@ -259,53 +267,93 @@
 	</nav>
 	<!--/.Navbar -->
 
-	
-
 	<!-- multistep form -->
 	<form id="msform" method='post' action='/transaction/'>
 		{% csrf_token %}
 		<!-- progressbar -->
+		<div style="text-align:center;">
 		<ul id="progressbar">
 			<li class="active">Seller Details</li>
 			<li>Buyer Details</li>
+			<li>Witness 1 </li>
+			<li>Witness 2 </li>
 		</ul>
+		</div>
 		<!-- fieldsets -->
 	  
 		<fieldset>
 		
-			<h2 class="fs-title">Seller Details</h2>
 			
-			<input type="text" id="seller_name" name="seller_name" placeholder="Seller Name" />
-			<input type="text" id="seller_adhar_number" name="seller_adhar_number" name="Company" placeholder="Aadhar Number" />
-			<input type="text" id="seller_email_id" name="seller_email_id" name="email" placeholder="Email" />
-			<input type="text" id="seller_property_name" name="seller_property_name" placeholder="Property Name" />
+			<div style="text-align: center;">
+				<h2 class="fs-title" style="font-weight: bold;">Seller Details</h2>
+			</div>
 			
-			<input type="button" name="next" class="next action-button" style="background-color:#254441;border-radius:10px" value="Next" />
+			<span id='label'>Seller Name</span><input type='text' id="seller_name" name="seller_name" placeholder = "Seller name">
+			<span id='label'>Seller Aadhar Number</span><input type='text' id="seller_adhar_number" name="seller_adhar_number" placeholder = "Aadhar number">
+			<span id='label'>Seller Email Id</span><input type='text' id="seller_email_id" name="seller_email_id" placeholder = "Seller Email Id">
+			<span id='label'>Seller Property Name</span><input type='text' id="seller_property_name" name="seller_property_name" placeholder = "Seller Property name">
+			<input type="button" name="next" class="next action-button" style="background-color:#254441;border-radius:10px;margin-left:80px;" value="Next" />
 		
-		</fieldset>
+		</fieldset>		
 	  
 		<fieldset>
-		
-			<h2 class="fs-title">Buyer Details</h2>
 			
-			<input type="text" id="buyer_name" name="buyer_name" placeholder="Buyer Name" />
-			<input type="text" id="buyer_adhar_number" name="buyer_adhar_number" placeholder="Aadhar Number" />
-			<input type="text" id="buyer_email_id" name="buyer_email_id" placeholder="Email" />
-			
-			<!-- <label style="color: black;">Property Paper</label> -->
-			<div style="position:relative;">
-				<a class='btn' href='javascript:;'>
-					Upload property paper
-					<input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="buyer_property_paper" id = 'buyer_property_paper' size="40"  onchange='$("#upload-file-info").html($(this).val());'>
-				</a>
-				&nbsp;
-				<span class='label label-info' id="upload-file-info"></span>
+			<div style="text-align: center;">
+				<h2 class="fs-title" style="font-weight: bold;">Buyer Details</h2>
 			</div>
 
-			<input type="button" name="previous" class="previous action-button" style="background-color:#254441;border-radius:10px" value="Previous" />
-			<input type="submit" name="submit" class="submit action-button" style="background-color:#254441;border-radius:10px" value="Submit" />
+			<span id='label'>Buyer Name</span><input type='text' id="buyer_name" name="buyer_name" placeholder = "Buyer name">
+			<span id='label'>Buyer Aadhar Number</span><input type='text' id="buyer_adhar_number" name="buyer_adhar_number" placeholder = "Buyer Aadhar number">
+			<span id='label'>Buyer Email Id</span><input type='text' id="buyer_email_id" name="buyer_email_id" placeholder = "Buyer Email Id">
+
+			<div style="position:relative;">
+					<span id='label'>Upload Documents</span>
+					<a class='btn' href='javascript:;'>
+						Choose file
+						<input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="property_paper" id = 'property_paper' size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+					</a>
+					&nbsp;
+					<span class='label label-info' id="upload-file-info"></span>
+				</div>
+					
+			<!-- <label style="color: black;">Property Paper</label> -->		
+
+			<input type="button" name="previous" class="previous action-button" style="background-color:#254441;border-radius:10px;margin-left:22px;" value="Previous" />
+			<input type="button" name="next" class="next action-button" style="background-color:#254441;border-radius:10px" value="Next" />
 
 		</fieldset>
+
+		<fieldset>
+			<div style="text-align: center;">
+				<h2 class="fs-title" style="font-weight: bold;">Witness 1 Details</h2>
+			</div>
+
+			<span id='label'>Witness Name</span><input type='text' id="witness1_name" name="witness1_name" placeholder = "Witness name">
+			<span id='label'>Witness Aadhar Number</span><input type='text' id="witness1_aadhar_number" name="witness1_aadhar_number" placeholder = "Witness Aadhar number">
+			<span id='label'>Witness Email Id</span><input type='text' id="witness1_email_id" name="witness1_email_id" placeholder = "Witness Email Id">
+			<span id='label'>Witness Phone Number</span><input type='text' id="witness1_mobno" name="witness1_mobno" placeholder = "Witness Phone number">
+
+
+			<input type="button" name="previous" class="previous action-button" style="background-color:#254441;border-radius:10px;margin-left:22px;" value="Previous" />
+			<input type="button" name="next" class="next action-button" style="background-color:#254441;border-radius:10px" value="Next" />
+		</fieldset>
+
+		<fieldset>
+			<div style="text-align: center;">
+				<h2 class="fs-title" style="font-weight: bold;">Witness 2 Details</h2>
+			</div>
+
+			<span id='label'>Witness Name</span><input type='text' id="witness2_name" name="witness2_name" placeholder = "Witness name">
+			<span id='label'>Witness Aadhar Number</span><input type='text' id="witness2_aadhar_number" name="witness2_aadhar_number" placeholder = "Witness Aadhar number">
+			<span id='label'>Witness Email Id</span><input type='text' id="witness2_email_id" name="witness2_email_id" placeholder = "Witness Email Id">
+			<span id='label'>Witness Phone Number</span><input type='text' id="witness2_mobno" name="witness2_mobno" placeholder = "Witness Phone number">
+
+
+			<input type="button" name="previous" class="previous action-button" style="background-color:#254441;border-radius:10px;margin-left:22px;" value="Previous" />
+			<input type="submit" name="submit" class="next action-button" style="background-color:#254441;border-radius:10px" value="Submit" />
+		</fieldset>
+
+
 	  
 	</form>
 
