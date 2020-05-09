@@ -1,0 +1,31 @@
+body {
+	background: #212121;
+	line-height: 32px;
+	color: #ffffff;
+	margin: 0;
+	padding: 0;
+	word-wrap:break-word !important;
+	font-family: 'Open Sans', sans-serif;
+	overflow-x: hidden; //horizontal
+}
+
+
+
+/* successful_msg_page */
+.center-screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 80vh;
+	margin-bottom: 10px;
+}
+/* successful_msg_page */
+
+/* contact */
+#asterisk {
+	color: red;
+}
+/* contact */
+

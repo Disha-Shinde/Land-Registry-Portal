@@ -1,0 +1,25 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css";
+
+body {
+	background: #212121;
+	line-height: 32px;
+	color: #ffffff;
+	margin: 0;
+	padding: 0;
+	word-wrap:break-word !important;
+	font-family: 'Open Sans', sans-serif;
+	overflow-x: hidden; //horizontal
+}
+nav { 
+	margin:0;
+	padding: 0;
+	background-color: #254441;
+}
+.navbar .dropdown-menu a:hover {
+	color: #616161 !important;
+}
+.darken-grey-text {
+	color: #2E2E2E;
+}

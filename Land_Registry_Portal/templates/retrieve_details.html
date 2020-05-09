@@ -3,159 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Search Property</title>
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
-	<!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css'> -->
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	{% load static %}
+	<link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+	<link rel='stylesheet' href="{% static 'css/nav_style.css' %}">
+	<link rel='stylesheet' href="{% static 'css/main_style.css' %}">
+	<link rel='stylesheet' href="{% static 'css/search.css' %}">
+	
+	<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 	<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 	<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.jqueryui.min.css">
 	<link href="https://cdn.datatables.net/rowgroup/1.1.1/css/rowGroup.jqueryui.min.css">
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
- 	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$('#example').DataTable(
-		 {
-			order: [[2, 'asc']],
-			rowGroup: {
-				dataSrc: 2
-		  },
-		  bAutoWidth: false, 
-		  "bPaginate": false,
-		 
-			aoColumns : [
-			 { sWidth: '20%' },
-		
-			 { sWidth: '10%' }
-		 ],
-
-		"bLengthChange": false,
-	   
-		
-		} );
-	} )
-
-
-
-
-	</script>
-	<style>
-		/* Navbar */
-		body {
-			background: #212121;
-			line-height: 32px;
-			color: #ffffff;
-			margin: 0;
-			padding: 0;
-			word-wrap:break-word !important;
-			font-family: 'Open Sans', sans-serif;
-		}
-		nav { 
-			margin:0;
-			padding: 0;
-			background-color: #254441;
-		}
-		.navbar .dropdown-menu a:hover {
-			color: #616161 !important;
-		}
-		.darken-grey-text {
-			color: #2E2E2E;
-		}
-		#name, #adhar_number, #email_id {
-			width:80%;
-			margin-top: 10px;
-			margin-bottom: 20px;
-			border-color: rgba(0, 0, 0, .14);
-		}
-		#name:hover, #adhar_number:hover, #email_id:hover {
-			border-color: #0040ff;
-		}
-		#search_button{
-			margin-top: 20px;
-			border:1px solid;
-			margin-left: 20%;
-			border-radius: 12px;
-			width: 40%;
-			text-align: center;
-			margin-bottom: 50px;
-
-		}
-		#search_button:hover{
-			background-color:#254441;
-			color:white;
-			
-		}
-		.btn{
-			text-align: left;
-		}
-
-		.btn::before {
-		  position: absolute;
-		  content: "";
-		  top: 0;
-		  left: 0;
-		  width: 100%;
-		  height: 100%;
-		  background: linear-gradient(120deg, transparent, rgba(51, 152, 219, 0.5), transparent);
-		  transform: translateX(-100%);
-		  transition: 0.5s;
-		  
-		}
-		.btn:hover {
-		  box-shadow: 0 0 20px 10px #254441;
-		}
-
-		.button:hover {
-		  box-shadow: 0 0 20px 10px #254441;
-		}
-
-		.btn:hover::before {
-		  transform: translateX(100%);
-
-		}
-
-		.dataTables_filter {
-		display: none;
-		}
-
-			.button {
-			  background-color: #254441;
-			  border: none;
-			  color: white;
-			  padding: 10px 10px;
-			  text-align: center;
-			  text-decoration: none;
-			  display: inline-block;
-			  font-size: 16px;
-			  margin: 4px 2px;
-			  cursor: pointer;
-			  width: 20%;
-			  border-radius: 30px;
-			  margin-left: 40%;
-			  margin-bottom: 10px;
-			  margin-top: 10px;
-			  border: 1px solid white;
-			}
-			.dataTables thead tr td {
-			min-height: 40px; /* or whatever height you need to make them all consistent */
-		}
-		
-		table.dataTable td.dataTables_empty {
-			text-align: center;    
-		}
-
-
-	</style>
 </head>
 <body>
 <body class="hm-gradient">      
 	<!--Navbar -->
 	<nav class="mb-4 navbar navbar-expand-lg navbar-dark">
-		<a class="navbar-brand" href="#">Land Registry Portal</a>
+		<a class="navbar-brand" href="/land_registry_portal_index/"><img src="{% static 'img/logo.png' %}" width=100px height=40px> &nbsp;&nbsp;Land Registry Portal</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -165,15 +30,15 @@
 					<a class="nav-link" href="/land_registry_portal_index/"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fa fa-envelope"></i> Contact</a>
+					<a class="nav-link" href="/contact_us/"><i class="fa fa-envelope"></i> Contact</a>
 				</li>
-				<li class="nav-item">	
-					<a class="nav-link" href="#"><i class="fa fa-envelope"></i> About</a>
+				<li class="nav-item">
+					<a class="nav-link" href="/about_land_registry_portal/"><i class="fa fa-envelope"></i> About</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile </a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
-						<a class="dropdown-item" href="#"><i class="fa fa-user"></i> {{ user }}</a>
+						<a class="dropdown-item" href=""><i class="fa fa-user"></i> {{ user }}</a>
 						<a class="dropdown-item" href="/logout/">Log out</a>
 					</div>
 				</li>
@@ -185,17 +50,17 @@
 		
 <div class="container-fluid">
 		<div  style = "margin-top: 2%" ; >
-			<form  method='post' action='/search_property_by_user_details/'>
+			<form id='search' method='post' action='/search_property_by_user_details/'>
 				{% csrf_token %}
 				<div class ="row">
-					<div class ='col-md-4'>Name
-						<input type='text' id="name" name="name" class="btn" placeholder="Name"  >
+					<div class ='col-md-4'>Name <span id='asterisk'>*</span><br>
+						<input type='text' id="name" name="name" class="btn1" placeholder="Name" required>
 					</div>
-					<div class ='col-md-4'>Adhar Number
-						<input type='text' id="adhar_number" name="adhar_number" class="btn" placeholder="Adhar Number" >
+					<div class ='col-md-4'>Adhar Number<br>
+						<input type='text' id="adhar_number" name="adhar_number" class="btn1" placeholder="Adhar Number" >
 					</div>
-					<div class ='col-md-4'>E-mail ID
-						<input type='text' id="email_id" name="email_id" class="btn" placeholder="E-mail ID"  >
+					<div class ='col-md-4'>E-mail ID<br>
+						<input type='text' id="email_id" name="email_id" class="btn1" placeholder="E-mail ID"  >
 					</div>
 									
 				</div>
@@ -203,7 +68,7 @@
 				<div class="row">
 					<div class='col-md-4'></div>
 					<div class='col-md-4'>
-						<input type='submit' id="search_button" class="btn" value='SEARCH' >
+						<input type='submit' id="search_button" class="btn1" value='SEARCH' onclick="return validate_form('search')">
 					</div>
 					<div class='col-md-4'></div>
 				</div>
@@ -246,8 +111,42 @@
 
 
 </body>
+	<!-- navbar -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
 	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js'></script>
+	<!-- navbar -->
+	
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+ 	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+	<script src="{% static 'js/validation.js' %}"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable(
+		 {
+			order: [[2, 'asc']],
+			rowGroup: {
+				dataSrc: 2
+		  },
+		  bAutoWidth: false, 
+		  "bPaginate": false,
+		 
+			aoColumns : [
+			 { sWidth: '20%' },
+		
+			 { sWidth: '10%' }
+		 ],
+
+		"bLengthChange": false,
+	   
+		
+		} );
+	} )
+	</script>
+
 </body>
 </html>

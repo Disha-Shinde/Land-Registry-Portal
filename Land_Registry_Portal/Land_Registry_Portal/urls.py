@@ -34,6 +34,8 @@ urlpatterns = [
     path('search_property_by_address/', views.search_property_by_address, name='search_property_by_address'),
     path('view_property_details/', views.view_property_details, name='view_property_details'),
     path('login_user/', views.login_user, name='login_user'),
+    path('about_land_registry_portal/', views.about_land_registry_portal, name='about_land_registry_portal'),
+    path('contact_us/', views.contact_us, name='contact_us'),
     
     
 ]

@@ -1,0 +1,56 @@
+.ripple-button1, .ripple-button2, .ripple-button3{
+	position:relative;
+	width:250px;
+	height:75px;
+	background-color: #254441;
+	color:#FFF;
+	border-radius:3px;
+	text-decoration:none;
+	text-align:center;
+	vertical-align:middle;
+	display:table-cell;
+}
+
+.wave{
+	position:absolute;
+	width:220px;
+	height:75px;
+	background-color:#FFF;
+	top:0;
+	left:0;
+	transform: scale(0);
+	opacity:0.5;
+}
+
+.ripple-button1:hover > .wave, .ripple-button2:hover > .wave, .ripple-button3:hover > .wave{
+	animation: ripple-in 2s;
+}
+
+@keyframes ripple-in {
+ 0% {transform: scaleX(0);}
+ 20%{transform: scaleX(1);opacity:0.3;}
+ 100%{transform: scaleX(1);opacity:0;}
+}
+
+a {
+  text-decoration: none !important;
+  color: white;
+}
+
+.img {
+  margin-right: -15px;
+  margin-left: -15px;
+  padding-bottom: 62.5%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a:hover { 
+	color: white;
+}
+
+.groove {
+	width: 70%;
+	padding: 70px 0;	/* vertically center */
+}

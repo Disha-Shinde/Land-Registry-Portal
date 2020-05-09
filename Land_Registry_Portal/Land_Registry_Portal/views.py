@@ -39,12 +39,12 @@ def login_user(request):
         key = int(random.uniform(0,100000))
         fh = open(r'C:\Users\DISHA\Documents\GitHub\BE Project\Land_Registry_Portal\Land_Registry_Portal\serverkey.txt', 'w')
         fh.write(str(key))
-        #print(key)
+        print(key)
         fh.close()
         return render(request, 'login_page.html', { 'key': key })
     
     else:
-        #print(username, password, client_random_number_hash)
+        print(username, password, client_random_number_hash)
         
         try:
             u = User.objects.get(username__exact=username)
@@ -66,17 +66,17 @@ def login_user(request):
         #generate the combined hash of hashed server_key, hashed client_key and hashed password
         h = str(hash_from_db+server_key_hash+client_random_number_hash).encode('utf8')
         hash_all = (hashlib.sha256(h)).hexdigest()
-        #print(hash_all, password)
+        print(hash_all, password)
         # if the combined hash generated here and extracted from request is matched, then details are correct and redirect user to next page
         # or else send an error message
         if hash_all == password:
-            #print('correct password')
+            print('correct password')
             user = User.objects.get(username = request.POST['username'])
             login(request, user)
             return redirect('/land_registry_portal_index/')
 
         else:
-            #print('wrong password')
+            print('wrong password')
             key = int(random.uniform(0,100000))
             fh = open(r'C:\Users\DISHA\Documents\GitHub\BE Project\Land_Registry_Portal\Land_Registry_Portal\serverkey.txt', 'w')
             fh.write(str(key))
@@ -268,7 +268,6 @@ def view_property_details(request):
         return HttpResponseForbidden('Error viewing the property <br> '+ str(e)+'<br>contact administrator')
 
         
-        
 def transact(request):
     try:
         if not request.user.is_authenticated:
@@ -331,7 +330,53 @@ def transaction(request):
     except BaseException as e:
         return HttpResponseForbidden('Error registering <br> '+ str(e)+'<br>contact administrator')
         
+     
+def about_land_registry_portal(request):
+    try:
+        if not request.user.is_authenticated:
+            key = int(random.uniform(0,100000))
+            fh = open(r'C:\Users\DISHA\Documents\GitHub\BE Project\Land_Registry_Portal\Land_Registry_Portal\serverkey.txt', 'w')
+            fh.write(str(key))
+            fh.close()
+            return render(request, 'login_page.html', { 'key': key, 'error': 'You must Login first!' })
         
+        user = str(request.user)
+        
+        return render(request, 'about.html', { 'user': user })
+        
+        
+    except BaseException as e:
+        return HttpResponseForbidden('Error loading page <br> '+ str(e)+'<br>Contact administrator')
+  
+
+def contact_us(request):
+    try:
+        if not request.user.is_authenticated:
+            key = int(random.uniform(0,100000))
+            fh = open(r'C:\Users\DISHA\Documents\GitHub\BE Project\Land_Registry_Portal\Land_Registry_Portal\serverkey.txt', 'w')
+            fh.write(str(key))
+            fh.close()
+            return render(request, 'login_page.html', { 'key': key, 'error': 'You must Login first!' })
+        
+        user = str(request.user)
+        
+        if request.method == 'POST':
+            name = request.POST.get("name")  
+            email = request.POST.get("email")
+            subject = request.POST.get("subject")            
+            message = request.POST.get("message")
+            
+            body = 'Name: ' + name + '\nEmail ID: ' + email + '\nQuery: \n      ' + message
+            #ModuleSendEmail.send_mail('dishashinde17@gmail.com', 'snehalpadekar0@gmail.com', subject, body)
+            
+            return render(request, 'successful_msg_page.html', { 'user': user, 'msg': 'Our team will come back to you within a matter of hours to help you!' })  
+        
+        return render(request, 'contact.html', { 'user': user })        
+        
+    except BaseException as e:
+        return HttpResponseForbidden('Error loading page <br> '+ str(e)+'<br>Contact administrator')
+     
+    
 def logout_user(request):
     logout(request)
     key = int(random.uniform(0,100000))

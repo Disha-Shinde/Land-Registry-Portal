@@ -14,6 +14,7 @@ body {
   font-family: Lato, sans-serif;
   background:
   url("https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/9d90d30e-b44b-496a-9034-e738aa42a030/File/4e8c8a89208cc1005aacafa92a854007/shutterstock_546199567.jpg") 0/cover fixed;
+  overflow-y: hidden;
 }
 
 .login-form {
@@ -268,13 +269,14 @@ body {
 <body>
 <!-- partial:index.partial.html -->
 <div class="login-form">
-    <h1>Login</h1>
+    <h1>Sign In</h1>
 	<div>
 	{% if error %}
 		<!-- <span class="blinking"><h3>&#9888; {{ error }} &#9888;</h3></span> -->
 		<span style="color:red;text-align: center;"><h3>&#9888; {{ error }} &#9888;</h3></span>
 	{% endif %}
 	</div>
+	Don't have an account? <a href="/register/">Sign Up</a>
     <div class="form-field">
         <i class="fas fa-user"></i>
         <input type="text" name="username" id="username" class="form-field" pattern="^[a-zA-Z0-9_-]{1,16}$" placeholder=" " required>
@@ -285,14 +287,14 @@ body {
         <input type="password" name="password" id="password" class="form-field" placeholder=" " required>
         <label for="password">Password</label>
     </div>
-	<button value="Login" class="btn" onclick=submit_action()>Login</button>
+	<button value="Login" class="btn" onclick=submit_action()>Sign In</button>
 
 
-<hr style="width: 280px">Or
-<form action="/register/" method="get">
-	{% csrf_token %}
-	<button type="submit" class="btn" style="width: 280px">Sign up</button>
-</form>
+<!-- <hr style="width: 280px">Or -->
+<!-- <form action="/register/" method="get"> -->
+	<!-- {% csrf_token %} -->
+	<!-- <button type="submit" class="btn" style="width: 280px">Sign up</button> -->
+<!-- </form> -->
 </div>
 
 <!-- partial -->

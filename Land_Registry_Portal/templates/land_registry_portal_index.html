@@ -2,100 +2,18 @@
 <html lang="en" >
 <head>
 	<meta charset="UTF-8">
-	<title></title>
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css'>
-	<style>
-		/* Navbar */
-		body {
-			background: #212121;
-			line-height: 32px;
-			color: #ffffff;
-			margin: 0;
-			padding: 0;
-			word-wrap:break-word !important;
-			font-family: 'Open Sans', sans-serif;
-		}
-		nav { 
-			margin:0;
-			padding: 0;
-			background-color: #254441;
-		}
-		.navbar .dropdown-menu a:hover {
-			color: #616161 !important;
-		}
-		.darken-grey-text {
-			color: #2E2E2E;
-		}
-		/* Navbar */
-		
-		/* Main */
-		
-		/* Main body */
+	<title>Land Registry Portal</title>
+	{% load static %}
+	<link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+	<link rel='stylesheet' href="{% static 'css/nav_style.css' %}">
+	<link rel='stylesheet' href="{% static 'css/land_registry_portal_index_style.css' %}">
 
-	.ripple-button1, .ripple-button2, .ripple-button3{
-		position:relative;
-		width:250px;
-		height:75px;
-		background-color: #254441;
-		color:#FFF;
-		border-radius:3px;
-		text-decoration:none;
-		text-align:center;
-		vertical-align:middle;
-		display:table-cell;
-	}
-
-	.wave{
-		position:absolute;
-		width:250px;
-		height:75px;
-		background-color:#FFF;
-		top:0;
-		left:0;
-		transform: scale(0);
-		opacity:0.5;
-	}
-
-	.ripple-button1:hover > .wave, .ripple-button2:hover > .wave, .ripple-button3:hover > .wave{
-		animation: ripple-in 2s;
-	}
-
-	@keyframes ripple-in {
-	 0% {transform: scaleX(0);}
-	 20%{transform: scaleX(1);opacity:0.3;}
-	 100%{transform: scaleX(1);opacity:0;}
-	}
-
-	a {
-	  text-decoration: none !important;
-	  color: white;
-	}
-
-	.img {
-	  margin-right: -15px;
-	  margin-left: -15px;
-	  padding-bottom: 62.5%;
-	  background-position: 50% 50%;
-	  background-repeat: no-repeat;
-	  background-size: cover;
-	}
-	
-	a:hover { 
-		color: white;
-	}
-
-/* Main body */
-		
-		/* Main */
-	</style>
 </head>
 <body>
 <body class="hm-gradient">      
 	<!--Navbar -->
 	<nav class="mb-4 navbar navbar-expand-lg navbar-dark">
-		<a class="navbar-brand" href="#">Land Registry Portal</a>
+		<a class="navbar-brand" href="/land_registry_portal_index/"><img src="{% static 'img/logo.png' %}" width=100px height=40px> &nbsp;&nbsp;Land Registry Portal</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -105,15 +23,15 @@
 					<a class="nav-link" href="/land_registry_portal_index/"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fa fa-envelope"></i> Contact</a>
+					<a class="nav-link" href="/contact_us/"><i class="fa fa-envelope"></i> Contact</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fa fa-envelope"></i> About</a>
+					<a class="nav-link" href="/about_land_registry_portal/"><i class="fa fa-envelope"></i> About</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile </a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
-						<a class="dropdown-item" href="#"><i class="fa fa-user"></i> {{ user }}</a>
+						<a class="dropdown-item" href=""><i class="fa fa-user"></i> {{ user }}</a>
 						<a class="dropdown-item" href="/logout/">Log out</a>
 					</div>
 				</li>
@@ -126,39 +44,35 @@
 	<!--Main -->
 
 	<div class="container-fluid">
-
-	<div class = "row">
-
-		<div class = 'col-md-8'>
-			<div class="img" style="background-image: url('https://cdn.nohat.cc/thumb/f/720/5557286722338816.jpg'); background-size: 1058px 700px;">
+		<div class="row">
+			<div class="col-md-9" style="overflow-y:hidden">
+				<div class="img" style="background-image: url( {% static 'img/land_regisrty_portal_image.jpg' %} ); background-size: 100% 100%;">
+				</div>
+			</div>
+			<div class="col-md-3 text-center">
+				<center>
+				<div class="groove">
+					<a href="/upload_details/" class="ripple-button1"><div class="wave"></div>Property Registration</a>
+					&nbsp;&nbsp;
+					<a href="/search_property_by_address/" class="ripple-button2"><div class="wave"></div>Search Property By Address</a>
+					&nbsp;&nbsp;
+					<a href="/search_property_by_user_details/" class="ripple-button2"><div class="wave"></div>Search Property By Owner Name</a>
+					&nbsp;&nbsp;
+					<a href="/transact/" class="ripple-button3"><div class="wave"></div>Property Transaction</a>
+				</div>
+				</center>
 			</div>
 		</div>
-
-		<div class = 'col-md-4'>
-			<div class="groove" style="margin-top: 30%; margin-left: 25%">
-				<a href="/upload_details/" class="ripple-button1"><div class="wave"></div>Property Registration</a>
-				&nbsp;&nbsp;
-				<a href="/search_property_by_address/" class="ripple-button2"><div class="wave"></div>Search Property By Address</a>
-				&nbsp;&nbsp;
-				<a href="/search_property_by_user_details/" class="ripple-button2"><div class="wave"></div>Search Property By Owner Name</a>
-				&nbsp;&nbsp;
-				<a href="/transact/" class="ripple-button3"><div class="wave"></div>Property Transaction</a>
-			</div>
-		</div>
-
-		<!--<div class = 'col-md-5'></div>-->
-
 	</div>
-
-</div>
 
 	<!--/.Main -->
 
-
 </body>
+	<!-- navbar -->
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
 	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js'></script>
+	<!-- navbar -->
 </body>
 </html>
