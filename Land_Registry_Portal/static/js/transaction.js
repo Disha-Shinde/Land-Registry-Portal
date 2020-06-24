@@ -114,5 +114,5 @@ $(".next").click(function(){
 });
 
 $(".submit").click(function(){
-	return false;
+	return true;
 })

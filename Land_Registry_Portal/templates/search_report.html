@@ -44,9 +44,16 @@
 	<!--Main -->
 	
 	<div class="container">
-		{{property_details}}
-		<p><a href="{% static 'img/a.pdf' %}" target="_blank">Alternative link for the property document</a></p>
-		<embed src="{% static 'img/a.pdf' %}" type="application/pdf" width="100%" height="600px"/>
+		<!-- {{property_details}} -->
+		
+		Property ID: {{ property_details.0 }} <br>
+		Property Name: {{ property_details.1 }} <br>
+		Owner Name: {{ property_details.2 }} <br>
+		Adhar Number: {{ property_details.3 }} <br>
+		Email Id: {{ property_details.4 }} <br>
+
+		<p><a href="{% static 'img/AnnexureD.pdf' %}" target="_blank">Alternative link for the property document</a></p>
+		<embed src="{% static 'img/AnnexureD.pdf' %}" type="application/pdf" width="100%" height="600px"/>
 	</div>
 
 	<!--/.Main -->

@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('register/', views.signup_user, name='register'),
-    #path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),
     path('land_registry_portal_index/', views.land_registry_portal_index, name='land_registry_portal_index'),
     path('upload_details/', views.upload_details, name='upload_details'),

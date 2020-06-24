@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>SignUp Form</title>
+  {% load static %}
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
   <style>
   @import url(https://fonts.googleapis.com/css?family=Lato);
@@ -12,7 +13,8 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Lato, sans-serif;
-  background: url("https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/9d90d30e-b44b-496a-9034-e738aa42a030/File/4e8c8a89208cc1005aacafa92a854007/shutterstock_546199567.jpg") 0/cover fixed;
+  background: url("{% static 'img/login.jpg' %}") 0/cover fixed;
+  overflow-y: hidden;
 }
 
 .login-form {
@@ -129,6 +131,7 @@ body {
 		<span class="blinking"><h3>&#9888; {{ error }} &#9888;</h3></span>
 	{% endif %}
 	</div>
+	Already have an Account? <a href="/login_user/">Sign In</a>
     <div class="form-field">
         <i class="fas fa-user"></i>
         <input type="text" name="username" id="username" class="form-field" pattern="^[a-zA-Z0-9_-]{1,16}$" placeholder=" " required>

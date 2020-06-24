@@ -19,7 +19,6 @@ from Land_Registry_Portal import ModuleSendEmail
 def index(request):
     try:
         if not request.user.is_authenticated:
-            #return render(request, 'login_page.html',{ 'error': 'You must Login first' })
             return redirect('/login_user/')
             
         user = str(request.user)
@@ -177,7 +176,7 @@ def upload_file(request):
             
             ModuleSendEmail.send_mail(owner_name, 'snehalpadekar0@gmail.com', subject, body)
             
-            return render(request, 'successful_msg_page.html', { 'user': user, 'msg': 'All the details are successfully uploaded to the Land Registry Portal!<br>Mail sent to the owner!' })        
+            return render(request, 'successful_msg_page.html', { 'user': user, 'msg': 'All the details are successfully uploaded to the Land Registry Portal! Mail sent to the owner!' })        
         else:
             return redirect('/land_registry_portal_index/')   
                   
