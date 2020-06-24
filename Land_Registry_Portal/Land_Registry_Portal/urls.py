@@ -23,12 +23,18 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('register/', views.signup_user, name='register'),
-    path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),
     path('land_registry_portal_index/', views.land_registry_portal_index, name='land_registry_portal_index'),
     path('upload_details/', views.upload_details, name='upload_details'),
     path('upload_file/', views.upload_file, name='upload_file'),
-    path('retrieve_details/', views.retrieve_details, name='retrieve_details'),
-    path('retrieve_file/', views.retrieve_file, name='retrieve_file'),
+    path('search_property_by_user_details/', views.search_property_by_user_details, name='search_property_by_user_details'),
+    path('transact/', views.transact, name='transact'),
+    path('transaction/', views.transaction, name='transaction'),
+    path('search_property_by_address/', views.search_property_by_address, name='search_property_by_address'),
+    path('view_property_details/', views.view_property_details, name='view_property_details'),
+    path('login_user/', views.login_user, name='login_user'),
+    path('about_land_registry_portal/', views.about_land_registry_portal, name='about_land_registry_portal'),
+    path('contact_us/', views.contact_us, name='contact_us'),
+    
     
 ]

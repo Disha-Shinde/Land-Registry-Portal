@@ -1,34 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title>Property Registration</title>
+	{% load static %}
+	<link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+	<link rel='stylesheet' href="{% static 'css/nav_style.css' %}">
+	<link rel='stylesheet' href="{% static 'css/main_style.css' %}">
+	<link rel='stylesheet' href="{% static 'css/upload_details_style.css' %}">
+
+</head>
+
 <body>
+<body class="hm-gradient">      
+	<!--Navbar -->
+	<nav class="mb-4 navbar navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" href="/land_registry_portal_index/"><img src="{% static 'img/logo.png' %}" width=100px height=40px> &nbsp;&nbsp;Land Registry Portal</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/land_registry_portal_index/"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/contact_us/"><i class="fa fa-envelope"></i> Contact</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/about_land_registry_portal/"><i class="fa fa-envelope"></i> About</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile </a>
+					<div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+						<a class="dropdown-item" href=""><i class="fa fa-user"></i> {{ user }}</a>
+						<a class="dropdown-item" href="/logout/">Log out</a>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</nav>
+	<!--/.Navbar -->	
 
-<h2>Upload the PDF File</h2>
+	<!-- multistep form -->
+	<form id="msform" method='post' action='/upload_file/'>
+		{% csrf_token %}
+		<!-- progressbar -->
+		<div style="text-align: center;">
+		<ul id="progressbar">
+			<li class="active">User Details</li>
+			<li>Property Details</li>
+		</ul>
+		</div>
+		<!-- fieldsets -->
+	  
+		<fieldset>
+		
+		<div style="text-align: center;">
+			<h2 class="fs-title" style="font-weight: bold;">User Details</h2>
+		</div>
+			
+				<span id='label'>Owner Name <span id='asterisk'>*</span></span>
+				<input type='text' id="owner_name" name="owner_name" placeholder = "Owner name" required>
+				
+				<span id='label'>Adhar Number <span id='asterisk'>*</span></span>
+				<input type="text" id="adhar_number" name="adhar_number" placeholder = "Adhar Number" required>
+				
+				<span id='label'>Email ID <span id='asterisk'>*</span></span>
+				<input type="Email" name="email_id" placeholder = "Email ID" required>
+				
+				<span id='label'>Property Name <span id='asterisk'>*</span></span>
+				<input type="text" id="property_name" name="property_name" placeholder = "Property Name" required>
+				
+				<div style="position:relative;">
+					<span id='label'>Upload Documents <span id='asterisk'>*</span></span>
+					<a class='btn' href='javascript:;'>
+						Choose file
+						<input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="property_paper" id = 'property_paper' size="40"  onchange='$("#upload-file-info").html($(this).val());' required>
+					</a>
+					&nbsp;
+					<br><center><span class='label label-info' id="upload-file-info">No file selected</span></center>
+				</div>
+					
+				<div class="next-button-holder">
+				<input type="button" name="next" class="next action-button" style="background-color:#254441;border-radius:10px;" value="Next" />
+				</div>
+		</fieldset>
+	  
+		<fieldset>
+		
+			<div style="text-align:center;">
+				<h2 class="fs-title" style="font-weight: bold;">Property Details</h2>
+			</div>
+			
+			<br>
+			<div class="row">
+				<div class="col-md-4"><span id='label'>Plot Number <span id='asterisk'>*</span></span></div>
+				<div class="col-md-8"><input type="text" id="plot_number" name="plot_number" placeholder = "Plot Number" required></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><span id='label'>Sector Number <span id='asterisk'>*</span></span></div>
+				<div class="col-md-8"><input type="text" id="sector_number" name="sector_number" placeholder = "Sector Number" required></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><span id='label'>Road/ Landmark</span></div>
+				<div class="col-md-8"><input type="text" id="road_name" name="road_name" placeholder = "Road / Landmark"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><span id='label'>Area</span></div>
+				<div class="col-md-8"><input type="text" id="area_name" name="area_name" placeholder = "Area"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><span id='label'>City <span id='asterisk'>*</span></span></div>
+				<div class="col-md-8"><input type="text" id="city_name" name="city_name" placeholder = "City" required></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><span id='label'>State <span id='asterisk'>*</span></span></div>
+				<div class="col-md-8"><input type="text" id="state_name" name="state_name" placeholder = "State" required></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><span id='label'>Country <span id='asterisk'>*</span></span></div>
+				<div class="col-md-8"><input type="text" id="country_name" name="country_name" placeholder = "Country" required></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><span id='label'>Pin Code <span id='asterisk'>*</span></span></div>
+				<div class="col-md-8"><input type="text" id="pin_code" name="pin_code" placeholder = "Pin Code" required></div>
+			</div>
 
-<form name='upload_form' method='post' action='/upload_file/'>
-	{% csrf_token %}
-	Owner Name: <input type="text" id="owner_name" name="owner_name">
-	<br>
-	<br>
-	Adhar Number: <input type="text" id="adhar_number" name="adhar_number">
-	<br>
-	<br>
-	Email Id: <input type="Email" name="email_id"/>
-	<br>
-	<br>
-	Property Name: <input type="text" id="property_name" name="property_name">
-	<br>
-	<br>
-	Property Paper: <input type="file" id="property_paper" name="property_paper">
-	<br>
-	<br>
-	<input type='submit' value='Upload'>
-</form>
+			<input type="button" name="previous" class="previous action-button" style="background-color:#254441;border-radius:10px;float:left;margin-left:10%" value="Previous" />
+			<input type="submit" name="submit" class="submit action-button" style="background-color:#254441;border-radius:10px;float:right;margin-right:10%" value="Submit" onclick="validate_form('msform')"/>
 
-<script>
-function myFunction() {
-  
-}
-</script>
-
+		</fieldset>
+	  
+	</form>
+</body>
+	<!-- navbar -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js'></script>
+	<!-- navbar -->
+	<script src="{% static 'js/upload.js' %}"></script>
+	<script src="{% static 'js/validation.js' %}"></script>
 </body>
 </html>

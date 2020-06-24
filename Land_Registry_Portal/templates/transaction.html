@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title>Property Transaction</title>
+	{% load static %}
+	<link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+	<link rel='stylesheet' href="{% static 'css/nav_style.css' %}">
+	<link rel='stylesheet' href="{% static 'css/main_style.css' %}">
+	<link rel='stylesheet' href="{% static 'css/transaction.css' %}">
+
+</head>
+
+<body>	
+<body class="hm-gradient">      
+	<!--Navbar -->
+	<nav class="mb-4 navbar navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" href="/land_registry_portal_index/"><img src="{% static 'img/logo.png' %}" width=100px height=40px> &nbsp;&nbsp;Land Registry Portal</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/land_registry_portal_index/"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/contact_us/"><i class="fa fa-envelope"></i> Contact</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/about_land_registry_portal/"><i class="fa fa-envelope"></i> About</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile </a>
+					<div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+						<a class="dropdown-item" href=""><i class="fa fa-user"></i> {{ user }}</a>
+						<a class="dropdown-item" href="/logout/">Log out</a>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</nav>
+	<!--/.Navbar -->
+
+	<!-- multistep form -->
+	<form id="msform" method='post' action='/transaction/'>
+		{% csrf_token %}
+		<!-- progressbar -->
+		<div style="text-align:center;">
+		<ul id="progressbar">
+			<li class="active">Seller Details</li>
+			<li>Buyer Details</li>
+			<li>Witness 1 </li>
+			<li>Witness 2 </li>
+		</ul>
+		</div>
+		<!-- fieldsets -->
+	  
+		<fieldset>
+		
+			<div style="text-align: center;">
+				<h2 class="fs-title" style="font-weight: bold;">Seller Details</h2>
+			</div>
+			
+			<span id='label'>Seller Name <span id='asterisk'>*</span></span>
+			<input type='text' id="seller_name" name="seller_name" placeholder = "Seller name" required>
+			
+			<span id='label'>Seller Aadhar Number <span id='asterisk'>*</span></span>
+			<input type='text' id="seller_adhar_number" name="seller_adhar_number" placeholder = "Aadhar number" required>
+			
+			<span id='label'>Seller Email Id <span id='asterisk'>*</span></span>
+			<div class="row">
+				<div class="col-md-10"><input type='text' id="seller_email_id" name="seller_email_id" placeholder = "Seller Email Id" required></div>
+				<div class="col-md-2"><a href="#" data-toggle="popover" data-content="Enter registered email Id only"><i class="fa fa-question-circle"></i></a></div>
+			</div>
+			
+			<span id='label'>Seller Property Name <span id='asterisk'>*</span></span>
+			<div class="row">
+				<div class="col-md-10"><input type='text' id="seller_property_name" name="seller_property_name" placeholder = "Seller Property name" required></div>
+				<div class="col-md-2"><a href="#" data-toggle="popover" data-content="Enter name under which the property was registered for the first time"><i class="fa fa-question-circle"></i></a></div>
+			</div>
+			
+			<div class="next-button-holder">
+				<input type="button" name="next" class="next1 action-button" style="background-color:#254441;border-radius:10px;" value="Next" />
+			</div>
+		
+		</fieldset>		
+	  
+		<fieldset>
+			
+			<div style="text-align: center;">
+				<h2 class="fs-title" style="font-weight: bold;">Buyer Details</h2>
+			</div>
+
+			<span id='label'>Buyer Name <span id='asterisk'>*</span></span>
+			<input type='text' id="buyer_name" name="buyer_name" placeholder = "Buyer name" required>
+			
+			<span id='label'>Buyer Aadhar Number <span id='asterisk'>*</span></span>
+			<input type='text' id="buyer_adhar_number" name="buyer_adhar_number" placeholder = "Buyer Aadhar number" required>
+			
+			<span id='label'>Buyer Email Id <span id='asterisk'>*</span></span>
+			<input type='text' id="buyer_email_id" name="buyer_email_id" placeholder = "Buyer Email Id" required>
+
+			<div style="position:relative;">
+				<span id='label'>Upload Documents <span id='asterisk'>*</span></span>
+				<a class='btn' href='javascript:;'>
+					Choose file
+					<input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="property_paper" id = 'property_paper' size="40"  onchange='$("#upload-file-info").html($(this).val());' required>
+				</a>
+				&nbsp;
+				<br><center><span class='label label-info' id="upload-file-info" style="font-size:10px">No file selected</span></center>
+			</div>
+					
+			<input type="button" name="previous" class="previous action-button" style="background-color:#254441;border-radius:10px;float:left;margin-left:5%" value="Previous" />
+			<input type="button" name="next" class="next action-button" style="background-color:#254441;border-radius:10px;float:right;margin-right:5%" value="Next" />
+
+		</fieldset>
+
+		<fieldset>
+			<div style="text-align: center;">
+				<h2 class="fs-title" style="font-weight: bold;">Witness 1 Details</h2>
+			</div>
+
+			<span id='label'>Witness Name <span id='asterisk'>*</span></span>
+			<input type='text' id="witness1_name" name="witness1_name" placeholder = "Witness name" required>
+			
+			<span id='label'>Witness Aadhar Number <span id='asterisk'>*</span></span>
+			<input type='text' id="witness1_aadhar_number" name="witness1_aadhar_number" placeholder = "Witness Aadhar number" required>
+			
+			<span id='label'>Witness Email Id</span>
+			<input type='text' id="witness1_email_id" name="witness1_email_id" placeholder = "Witness Email Id">
+			
+			<span id='label'>Witness Phone Number</span>
+			<input type='text' id="witness1_mobno" name="witness1_mobno" placeholder = "Witness Phone number">
+
+			<input type="button" name="previous" class="previous action-button" style="background-color:#254441;border-radius:10px;float:left;margin-left:5%" value="Previous" />
+			<input type="button" name="next" class="next action-button" style="background-color:#254441;border-radius:10px;float:left;margin-left:5%" value="Next" />
+		</fieldset>
+
+		<fieldset>
+			<div style="text-align: center;">
+				<h2 class="fs-title" style="font-weight: bold;">Witness 2 Details</h2>
+			</div>
+
+			<span id='label'>Witness Name <span id='asterisk'>*</span></span>
+			<input type='text' id="witness2_name" name="witness2_name" placeholder = "Witness name" required>
+			
+			<span id='label'>Witness Aadhar Number <span id='asterisk'>*</span></span>
+			<input type='text' id="witness2_aadhar_number" name="witness2_aadhar_number" placeholder = "Witness Aadhar number" required>
+			
+			<span id='label'>Witness Email Id</span>
+			<input type='text' id="witness2_email_id" name="witness2_email_id" placeholder = "Witness Email Id">
+			
+			<span id='label'>Witness Phone Number</span>
+			<input type='text' id="witness2_mobno" name="witness2_mobno" placeholder = "Witness Phone number">
+
+			<input type="button" name="previous" class="previous action-button" style="background-color:#254441;border-radius:10px;float:left;margin-left:5%" value="Previous" />
+			<input type="submit" name="submit" class="submit action-button" style="background-color:#254441;border-radius:10px;float:right;margin-right:5%" value="Submit" onclick="validate_form('msform')"/>
+		</fieldset>
+  
+	</form>
+	
+</body>
+	<!-- navbar -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js'></script>
+	<!-- navbar -->
+	<script src="{% static 'js/transaction.js' %}"></script>
+	<script src="{% static 'js/validation.js' %}"></script>
+
+	<script>
+	$(document).ready(function(){
+		$('[data-toggle="popover"]').popover();   
+	});
+</script>
+</body>
+</html>

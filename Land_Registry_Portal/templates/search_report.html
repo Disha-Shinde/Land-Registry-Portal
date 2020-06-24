@@ -2,12 +2,12 @@
 <html lang="en" >
 <head>
 	<meta charset="UTF-8">
-	<title>Land Registry Portal</title>
+	<title>Search Report</title>
 	{% load static %}
 	<link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
 	<link rel='stylesheet' href="{% static 'css/nav_style.css' %}">
-	<link rel='stylesheet' href="{% static 'css/land_registry_portal_index_style.css' %}">
-
+	<link rel='stylesheet' href="{% static 'css/main_style.css' %}">
+	
 </head>
 <body>
 <body class="hm-gradient">      
@@ -42,27 +42,20 @@
 	<!--/.Navbar -->
 	
 	<!--Main -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-9" style="overflow-y:hidden">
-				<div class="img" style="background-image: url( {% static 'img/land_regisrty_portal_image.jpg' %} ); background-size: 100% 100%; background-position: left top;">
-				</div>
-			</div>
-			<div class="col-md-3 text-center">
-				<center>
-				<div class="groove">
-					<a href="/upload_details/" class="ripple-button1"><div class="wave"></div>Property Registration</a>
-					&nbsp;&nbsp;
-					<a href="/search_property_by_address/" class="ripple-button2"><div class="wave"></div>Search Property By Address</a>
-					&nbsp;&nbsp;
-					<a href="/search_property_by_user_details/" class="ripple-button2"><div class="wave"></div>Search Property By Owner Name</a>
-					&nbsp;&nbsp;
-					<a href="/transact/" class="ripple-button3"><div class="wave"></div>Property Transaction</a>
-				</div>
-				</center>
-			</div>
-		</div>
+	
+	<div class="container">
+		<!-- {{property_details}} -->
+		
+		Property ID: {{ property_details.0 }} <br>
+		Property Name: {{ property_details.1 }} <br>
+		Owner Name: {{ property_details.2 }} <br>
+		Adhar Number: {{ property_details.3 }} <br>
+		Email Id: {{ property_details.4 }} <br>
+
+		<p><a href="{% static 'img/AnnexureD.pdf' %}" target="_blank">Alternative link for the property document</a></p>
+		<embed src="{% static 'img/AnnexureD.pdf' %}" type="application/pdf" width="100%" height="600px"/>
 	</div>
+
 	<!--/.Main -->
 
 </body>
